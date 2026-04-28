@@ -1,28 +1,53 @@
-import NavBar from '../components/NavBar';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 import ProductCard from '../components/ProductCard';
-import Footer from '../components/Footer';
+import '../assets/css/Catalogo.css';
+
+const API_URL = import.meta.env.VITE_API_BASE_URL;
 
 function Catalogo() {
-    const links = [
-        { href: "/", text: "Inicio" },
-        { href: "/catalogo/hombres", text: "Hombres" },
-        { href: "/catalogo/ninos", text: "Niños" },
-        { href: "/catalogo/mujer", text: "Mujer" },
-        { href: "/contacto", text: "Contacto" }
-    ];
+    const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        const fetchProducts = async () => {
+            try {
+                const response = await axios.get(`${API_URL}/products`);
+                setProducts(response.data);
+            } catch (err) {
+                setError('Error al cargar los productos');
+                console.error(err);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchProducts();
+    }, []);
+
+    if (loading) return <div>Cargando productos...</div>;
+    if (error) return <div>{error}</div>;
 
     return (
-        <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-            <NavBar links={links} cantidadCarrito={0} />
-            <main>
-                <div className="app-title">
-                    <h1>Store Shop</h1>
-                </div>
-                <div>
-                    <ProductCard nombre="Producto 1" precio={100} badge="Nuevo" categoria="Hombres" descripcion="Descripcion del producto 1" imagen="/imgProduct/Shoes.png"/>       
-                </div>
-            </main>
-            <Footer />
+        <div className="catalogo-page">
+            <div className="app-title">
+                <h1>Store Shop</h1>
+            </div>
+            <div className="container-cards">
+                {products.map((product) => (
+                    <ProductCard
+                        key={product._id}
+                        name={product.name}
+                        price={product.price}
+                        image={product.image}
+                        details={product.details}
+                        category={product.category}
+                        stock={product.stock}
+                        badge={product.badge}
+                    />
+                ))}
+            </div>
         </div>
     );
 }

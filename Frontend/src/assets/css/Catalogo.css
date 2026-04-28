@@ -1,0 +1,29 @@
+/* Grid de productos - específico de Catalogo */
+.container-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* Tablet: 2 cards por fila */
+@media (min-width: 640px) {
+    .container-cards {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1.5rem;
+        padding: 2rem;
+    }
+}
+
+/* Desktop: 3-4 cards por fila, centrado */
+@media (min-width: 1024px) {
+    .container-cards {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+        gap: 2rem;
+        padding: 2rem 4rem;
+        justify-items: center;
+    }
+}

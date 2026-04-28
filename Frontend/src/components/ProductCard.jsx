@@ -1,23 +1,23 @@
 import '../assets/css/ProductCard.css';
 
-function ProductCard({nombre, precio, descripcion, imagen, categoria, badge }) {
+function ProductCard({name, details, price, image,  stock, category, active, badge}) {
     return (
         <article className= "card">
             <div className="imageContainer">
                 {badge && <span className="badge">{badge}</span>}
                 <img
-                    src={imagen || 'https://via.placeholder.com/300'}
-                    alt={nombre}
+                    src={image || `https://placehold.co/300x300/e2e8f0/64748b?text=${encodeURIComponent(name || 'Producto')}`}
+                    alt={name}
                     className="image"
                 />
             </div>
             <div className = "info">
-                <p className= "category" >{categoria}</p>
-                <h3 className="name">{nombre}</h3>
+                <p className= "category" >{category}</p>
+                <h3 className="name">{name}</h3>
                 <div className="priceRow">
-                    <span className="price">${precio}</span>
+                    <span className="price">${price}</span>
                 </div>
-                {descripcion && <p className="description">{descripcion}</p>}
+                {details && <p className="description">{details}</p>}
             </div>
         </article>
     );

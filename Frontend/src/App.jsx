@@ -1,19 +1,32 @@
 import { Routes, Route } from 'react-router-dom';
-import Home from './pages/home';
-import Contact from './pages/contact';
-import Catalogo from './pages/catalogo';
+import Home from './pages/Home';
+import Contact from './pages/Contact';
+import Catalogo from './pages/Catalogo';
+import NavBar from './components/NavBar';
+import Footer from './components/Footer';
 import './App.css';
 
 function App() {
+  const links = [
+    { href: "/", text: "Inicio" },
+    { href: "/catalogo/hombres", text: "Hombres" },
+    { href: "/catalogo/ninos", text: "Niños" },
+    { href: "/catalogo/mujer", text: "Mujer" },
+    { href: "/contacto", text: "Contacto" }
+  ];
+
   return (
-    <div>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/contacto" element={<Contact />} />
-        <Route path="/catalogo/:categoria" element={<Catalogo />} />
-      </Routes>
+    <div className="app-container">
+      <NavBar links={links} cantidadCarrito={0} />
+      <main className="main-content">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/contacto" element={<Contact />} />
+          <Route path="/catalogo/:categoria" element={<Catalogo />} />
+        </Routes>
+      </main>
+      <Footer />
     </div>
-    
   );
 }
 
