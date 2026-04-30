@@ -1,8 +1,10 @@
 import '../assets/css/ProductCard.css';
+import { useNavigate } from 'react-router-dom';
 
-function ProductCard({name, details, price, image,  stock, category, active, badge}) {
+function ProductCard({id, name, details, price, image, stock, category, active, badge}) {
+    const navigate = useNavigate();
     return (
-        <article className= "card">
+        <article className="card" onClick={() => navigate(`/producto/${id}`)} style={{cursor: 'pointer'}}>
             <div className="imageContainer">
                 {badge && <span className="badge">{badge}</span>}
                 <img
@@ -24,3 +26,4 @@ function ProductCard({name, details, price, image,  stock, category, active, bad
 }
 
 export default ProductCard;
+

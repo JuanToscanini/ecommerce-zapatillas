@@ -5,6 +5,8 @@ import Catalogo from './pages/Catalogo';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 import './App.css';
+import FormProduct from './pages/FormProduct';
+import DetailProduct from './pages/DetailProduct';
 
 function App() {
   const links = [
@@ -12,7 +14,8 @@ function App() {
     { href: "/catalogo/hombres", text: "Hombres" },
     { href: "/catalogo/ninos", text: "Niños" },
     { href: "/catalogo/mujer", text: "Mujer" },
-    { href: "/contacto", text: "Contacto" }
+    { href: "/contacto", text: "Contacto" },
+    { href: "/crear-producto", text: "Crear Producto" }
   ];
 
   return (
@@ -23,6 +26,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/contacto" element={<Contact />} />
           <Route path="/catalogo/:categoria" element={<Catalogo />} />
+          <Route path="/crear-producto" element={<FormProduct />} />
+          <Route path="/producto/:id" element={<DetailProduct />} />
         </Routes>
       </main>
       <Footer />

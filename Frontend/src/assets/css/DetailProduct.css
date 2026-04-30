@@ -1,0 +1,148 @@
+.product-detail-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.product-image-section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.product-image-section img {
+    max-width: 100%;
+    width: 400px;
+    height: auto;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+.product-info-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.product-name {
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.product-price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #000;
+}
+
+.product-badge {
+    display: inline-block;
+    background: #03f3cb;
+    color: #000;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    width: fit-content;
+}
+
+.product-description {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+.product-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.product-meta p {
+    margin: 0;
+}
+
+.product-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e0e0e0;
+}
+
+.size-label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #333;
+}
+
+.size-input {
+    width: 80px;
+    padding: 0.5rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    text-align: center;
+    transition: border-color 0.2s;
+}
+
+.size-input:focus {
+    outline: none;
+    border-color: #03f3cb;
+}
+
+.add-to-cart-btn {
+    background: #000;
+    color: #fff;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+}
+
+.add-to-cart-btn:hover {
+    background: #333;
+}
+
+.add-to-cart-btn:active {
+    transform: scale(0.98);
+}
+
+/* Tablet y Desktop: layout horizontal */
+@media (min-width: 768px) {
+    .product-detail-container {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 3rem;
+    }
+    
+    .product-image-section img {
+        width: 450px;
+    }
+}
+
+/* Desktop grande */
+@media (min-width: 1024px) {
+    .product-detail-container {
+        gap: 4rem;
+    }
+    
+    .product-image-section img {
+        width: 500px;
+    }
+}
