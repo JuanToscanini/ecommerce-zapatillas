@@ -48,7 +48,6 @@ function DetailProduct() {
                     <div className="product-meta">
                         <p><strong>Categoría:</strong> {product.category}</p>
                         <p><strong>Stock disponible:</strong> {product.stock} unidades</p>
-                        <p><strong>Estado:</strong> {product.active ? 'Activo' : 'Inactivo'}</p>
                     </div>
                     <div className="product-actions">
                         <label className="size-label">
@@ -58,8 +57,8 @@ function DetailProduct() {
                                 value={talle}
                                 onChange={(e) => setTalle(e.target.value)}
                                 placeholder="Ej: 42"
-                                min="1"
-                                max="99"
+                                min="20"
+                                max="55"
                                 className="size-input"
                             />
                         </label>

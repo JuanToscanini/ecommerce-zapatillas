@@ -19,7 +19,6 @@ function ProductCard({id, name, details, price, image, stock, category, active, 
                 <div className="priceRow">
                     <span className="price">${price}</span>
                 </div>
-                {details && <p className="description">{details}</p>}
             </div>
         </article>
     );

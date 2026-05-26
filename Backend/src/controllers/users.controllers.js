@@ -19,6 +19,10 @@ const getUserById = async (req, res) => {
         }
         res.json(user);
     } catch (error) {
+        if(error.name === 'CastError'){
+            res.status(400).json({error:"ID obligatorio inválido"})
+            return
+        }
         res.status(500).json({ error: 'Error al obtener el usuario' });
     }
 };
@@ -29,15 +33,30 @@ const createUser = async (req, res) => {
         await nuevoUser.save();
         res.json(nuevoUser);
     } catch (error) {
-        res.status(500).json({ error: 'Error al crear el usuario' });
+        if(error.code === 11000){
+            res.status(409).json({error: "El correo electrónico ya se encuentra registrado"})
+            return
+        }
+        if(error.name === 'ValidationError'){
+            res.status(400).json({error:"Datos obligatorios inválidos"})
+            return
+        }
+        res.status(500).json({ error: 'Error al crear el usuario' });       
     }
 };
 
 const deleteUser = async (req, res) => {
     try {
         const user = await User.findByIdAndDelete(req.params.id);
+        if (!user) {
+            return res.status(404).json({ error: 'User no encontrado' });
+        }
         res.json(user);
     } catch (error) {
+        if(error.name === 'CastError'){
+            res.status(400).json({error:"ID obligatorio inválido"})
+            return
+        }
         res.status(500).json({ error: 'Error al eliminar el usuario' });
     }
 };
@@ -45,9 +64,20 @@ const deleteUser = async (req, res) => {
 const updateUserById = async (req, res) => {
     try {
         const user = await User.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
+        if (!user) {
+            return res.status(404).json({ error: 'User no encontrado' });
+        }
         res.json(user);
     } catch (error) {
-        res.status(500).json({ error: 'Error al actualizar el usuario' });
+        if(error.code === 11000){
+            res.status(409).json({error: "El correo electrónico ya se encuentra registrado"})
+            return
+        }
+        if(error.name === 'ValidationError'){
+            res.status(400).json({error:"Datos obligatorios inválidos"})
+            return
+        }
+        res.status(500).json({ error: 'Error al actualizar el usuario' });       
     }
 };
 
