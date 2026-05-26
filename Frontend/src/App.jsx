@@ -15,7 +15,8 @@ function App() {
     { href: "/catalogo/ninos", text: "Niños" },
     { href: "/catalogo/mujer", text: "Mujer" },
     { href: "/contacto", text: "Contacto" },
-    { href: "/crear-producto", text: "Crear Producto" }
+    { href: "/crear-producto", text: "Crear Producto" },
+    { href: "/producto/:id", text: "Detalle Producto" }
   ];
 
   return (
