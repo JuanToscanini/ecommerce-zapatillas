@@ -2,7 +2,7 @@ const Product = require('../models/product.model');
 
 const getProducts = async (req, res) => {
     try {
-        const products = await Product.find();
+        const products = await Product.find({ active: { $ne: false } });
         res.json(products);
     } catch (error) {
         res.status(500).json({ message: error.message });
@@ -11,16 +11,16 @@ const getProducts = async (req, res) => {
 
 const getProductById = async (req, res) => {
     try {
-        const product = await Product.findById(req.params.id);
-        if(!user){
-            res.status(400).json({error: "el producto no se encontro"})
-            return
+        const product = await Product.findOne({ _id: req.params.id, active: true });
+        if (!product) {
+            res.status(404).json({ error: 'El producto no se encontró' });
+            return;
         }
         res.json(product);
     } catch (error) {
-        if(error.name === "CastError"){
-            res.status(409).json({error: "ID de producto invalido"})
-            return
+        if (error.name === 'CastError') {
+            res.status(400).json({ error: 'ID de producto inválido' });
+            return;
         }
         res.status(500).json({ message: error.message });
     }
@@ -30,15 +30,15 @@ const createProduct = async (req, res) => {
     try {
         const product = new Product(req.body);
         await product.save();
-        res.json(product);
+        res.status(201).json(product);
     } catch (error) {
-        if(error.code === 11000){
-            res.status(400).json({error:"El producto ya existe"})
-            return
+        if (error.code === 11000) {
+            res.status(400).json({ error: 'El producto ya existe' });
+            return;
         }
-        if(error.name === "CastError"){
-            res.status(409).json({error: "datos obligatorios no validos"})
-            return
+        if (error.name === 'ValidationError') {
+            res.status(400).json({ error: 'Datos obligatorios no válidos' });
+            return;
         }
         res.status(500).json({ message: error.message });
     }
@@ -46,38 +46,48 @@ const createProduct = async (req, res) => {
 
 const deleteProduct = async (req, res) => {
     try {
-        const product = await product.findByIdAndDelete(req.params.id); // Obtener el ID del producto a eliminar
-        if(!product){
-            res.status(400).json({error:"producto no encontrada"})
+        const product = await Product.findByIdAndUpdate(
+            req.params.id,
+            { active: false },
+            { new: true }
+        );
+        if (!product) {
+            res.status(404).json({ error: 'Producto no encontrado' });
+            return;
         }
-        res.json(product);
+        res.json({ message: 'Producto dado de baja', product });
     } catch (error) {
-        if(error.name === "CastError"){
-            res.status(409).json({error: "datos obligatorios no validos"})
-            return
-        }
-        res.status(500).json({ message: error.message });
-    }
-}
-
-const updateProduct = async (req, res) => {
-    try {
-        const product = await product.findByIdAndUpdate(req.params.id, req.body, { new: true });
-        if(!product){
-            res.status(400).json({error:"producto no encontrado"})
-            return
-        }
-        res.json(product);
-    } catch (error) {
-        if(error.name === "CastError"){
-            res.status(409).json({error: "datos obligatorios no validos"})
-            return
+        if (error.name === 'CastError') {
+            res.status(400).json({ error: 'ID de producto inválido' });
+            return;
         }
         res.status(500).json({ message: error.message });
     }
 };
 
-
+const updateProduct = async (req, res) => {
+    try {
+        const product = await Product.findByIdAndUpdate(req.params.id, req.body, {
+            new: true,
+            runValidators: true
+        });
+        if (!product) {
+            res.status(404).json({ error: 'Producto no encontrado' });
+            return;
+        }
+        res.json(product);
+    } catch (error) {
+        if (error.name === 'ValidationError') {
+            res.status(400).json({ error: 'Datos obligatorios no válidos' });
+            return;
+        }
+        if (error.name === 'CastError') {
+            res.status(400).json({ error: 'ID de producto inválido' });
+            return;
+        }
+        res.status(500).json({ message: error.message });
+    }
+};
 
 module.exports = {
     getProducts,

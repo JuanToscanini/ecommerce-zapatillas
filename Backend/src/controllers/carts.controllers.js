@@ -11,7 +11,7 @@ const getCarts = async (req, res) => {
 
 const getCartById = async (req, res) => {
     try {
-        const cart = await cart.findById(req.params.id);
+        const cart = await Cart.findById(req.params.id);
         if (!cart) {
             return res.status(404).json({error: "carrito no encontrado" });
         }
@@ -42,19 +42,25 @@ const createCart = async (req, res) => {
     }
 };
 
-const updateCart = async (req, res) => {
+const addProductToCart = async (req, res) => {
     try {
-        const cart = await Cart.findByIdAndUpdate(req.params.id, req.body, { new: true });
-        if(!cart){
-            res.status(400).json({error: "carrito no encontrada"})
+        const { productId, quantity } = req.body;
+        if (!productId || !quantity) {
+            return res.status(400).json({ error: "productId y quantity son requeridos" });
+        }
+        const cart = await Cart.findByIdAndUpdate(
+            req.params.id,
+            { $push: { items: { product: productId, quantity } } },
+            { new: true }
+        );
+        if (!cart) {
+            return res.status(404).json({ error: "carrito no encontrado" });
         }
         res.json(cart);
     } catch (error) {
-        if(error.name === "CastError"){
-            res.status(409).json({error: "id de carrito invalido"})
-            return
+        if (error.name === "CastError") {
+            return res.status(400).json({ error: "id de carrito o producto inválido" });
         }
-        if(error.code === 11000)
         res.status(500).json({ message: error.message });
     }
 };
@@ -80,6 +86,6 @@ module.exports = {
     getCarts,
     getCartById,
     createCart,
-    updateCart,
+    addProductToCart,
     deleteCart
 };  

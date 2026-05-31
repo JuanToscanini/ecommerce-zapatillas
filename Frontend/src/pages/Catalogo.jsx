@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import ProductCard from '../components/ProductCard';
 import '../assets/css/Catalogo.css';
@@ -6,6 +7,7 @@ import '../assets/css/Catalogo.css';
 const API_URL = import.meta.env.VITE_API_BASE_URL;
 
 function Catalogo() {
+    const { categoria } = useParams();
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -26,6 +28,10 @@ function Catalogo() {
         fetchProducts();
     }, []);
 
+    const productosFiltrados = (!categoria || categoria === 'todos')
+        ? products
+        : products.filter((p) => p.category.toLowerCase() === categoria.toLowerCase());
+
     if (loading) return <div>Cargando productos...</div>;
     if (error) return <div>{error}</div>;
 
@@ -35,7 +41,7 @@ function Catalogo() {
                 <h1>Store Shop</h1>
             </div>
             <div className="container-cards">
-                {products.map((product) => (
+                {productosFiltrados.map((product) => (
                     <ProductCard
                         key={product._id}
                         id={product._id}

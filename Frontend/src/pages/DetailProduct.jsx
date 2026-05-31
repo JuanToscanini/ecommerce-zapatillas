@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 import '../assets/css/DetailProduct.css';
 
 const API_URL = import.meta.env.VITE_API_BASE_URL;
@@ -11,6 +12,26 @@ function DetailProduct() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [talle, setTalle] = useState('');
+
+    const handleAddToCart = async () => {
+        if (product.stock === 0) {
+            toast.warning('Sin stock disponible');
+            return;
+        }
+
+        const cartId = localStorage.getItem('cartId');
+
+        try {
+            await axios.put(`${API_URL}/carts/${cartId}`, {
+                productId: product._id,
+                quantity: 1
+            });
+            toast.success('Producto agregado al carrito');
+        } catch (err) {
+            console.error(err);
+            toast.error('Error al agregar al carrito');
+        }
+    };
 
     useEffect(() => {
         const fetchProduct = async () => {
@@ -62,7 +83,7 @@ function DetailProduct() {
                                 className="size-input"
                             />
                         </label>
-                        <button className="add-to-cart-btn">Agregar al carrito</button>
+                        <button className="add-to-cart-btn" onClick={handleAddToCart}>Agregar al carrito</button>
                     </div>
                 </div>
             </div>

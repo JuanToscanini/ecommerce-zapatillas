@@ -1,15 +1,45 @@
+import '../assets/css/Contact.css';
+
 function Contact() {
-    return (
-        <main>
-            <div className="app-title">
-                <h1>Store Shop</h1>
+  return (
+    <div className="contact-page">
+      <div className="contact-container">
+
+        <div className="contact-info">
+          <h2 className="contact-title">Contactanos</h2>
+          <div className="contact-item">
+            <div className="contact-icon">✉</div>
+            <div className="contact-text">
+              <span>contacto@storeshop.com</span>
+              <small>Email</small>
             </div>
-            <div>
-                <h1>Contacto</h1>
-                <p>Email: contacto@storeshop.com</p>
+          </div>
+          <div className="contact-item">
+            <div className="contact-icon">📍</div>
+            <div className="contact-text">
+              <span>Concepción del Uruguay</span>
+              <small>Ubicación</small>
             </div>
-        </main>
-    );
+          </div>
+          <div className="contact-item">
+            <div className="contact-icon">📱</div>
+            <div className="contact-text">
+              <span>@storeshop</span>
+              <small>Instagram</small>
+            </div>
+          </div>
+        </div>
+
+        <div className="contact-form">
+          <input className="contact-input" type="text" placeholder="Nombre" />
+          <input className="contact-input" type="email" placeholder="Email" />
+          <textarea className="contact-textarea" placeholder="Mensaje..."></textarea>
+          <button className="contact-btn">Enviar</button>
+        </div>
+
+      </div>
+    </div>
+  );
 }
 
 export default Contact;
