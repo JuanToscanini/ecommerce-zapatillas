@@ -14,30 +14,30 @@ const getSales = async (req, res) => {
 const getSaleById = async (req, res) => {
     try {
         const sale = await Sales.findById(req.params.id);
+        if (!sale) {
+            return res.status(404).json({ error: 'Venta no encontrada' });
+        }
         res.json(sale);
     } catch (error) {
+        if (error.name === 'CastError') {
+           res.status(400).json({ error: 'ID inválido' });
+           return;
+        }
         res.status(500).json({ message: error.message });
     }
 };
 
 const createSale = async (req, res) => {
     try {
-        const { date, user, items, total } = req.body;
-
-        if (!date || !user || !items || !total) {
-            return res.status(400).json({ error: 'Fecha, usuario, items y total son obligatorios' });
-        }
-
-        const newSale = new Sales({
-            date,
-            user,
-            items,
-            total
-        });
+        const newSale = new Sales(req.body);
         await newSale.save();
         res.status(201).json(newSale);
 
     } catch (error) {
+        if(error.name === 'ValidationError') {
+            res.status(400).json({ error: 'Datos obligatorios no válidos' });
+            return;
+        }
         res.status(500).json({ error: 'Error al crear la venta' });
     }
 };
@@ -45,8 +45,14 @@ const createSale = async (req, res) => {
 const deleteSale = async (req, res) => {
     try {
         const sale = await Sales.findByIdAndDelete(req.params.id);
+        if(!sale){
+            return res.status(404).json({ error: 'Venta no encontrada' });
+        }
         res.json(sale)
     } catch (error) {
+        if (error.name === 'CastError') {
+            return res.status(400).json({ error: 'ID inválido' });
+        }
         res.status(500).json({ message: error.message });
     }
 };
