@@ -17,7 +17,7 @@ import EditUser from './pages/EditUser';
 function App() {
   const links = [
     { href: "/", text: "Inicio" },
-    { href: "/catalogo/hombres", text: "Hombres" },
+    { href: "/catalogo/hombres", text: "Hombre" },
     { href: "/catalogo/ninos", text: "Niños" },
     { href: "/catalogo/mujer", text: "Mujer" },
     { href: "/contacto", text: "Contacto" },

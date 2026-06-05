@@ -16,6 +16,7 @@ function Catalogo() {
         const fetchProducts = async () => {
             try {
                 const response = await axios.get(`${API_URL}/products`);
+                console.log("Datos del backend:", response.data);
                 setProducts(response.data);
             } catch (err) {
                 setError('Error al cargar los productos');
@@ -41,7 +42,7 @@ function Catalogo() {
 
     if (loading) return <div>Cargando productos...</div>;
     if (error) return <div>{error}</div>;
-
+    console.log("Datos listos para renderizar:", products);
     return (
         <div className="catalogo-page">
             <div className="app-title">
