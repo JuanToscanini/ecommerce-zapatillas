@@ -1,27 +1,37 @@
-/* Grid de productos - específico de Catalogo */
+.catalogo-page {
+  background: #9e9e9e;
+  min-height: 100vh;
+  padding: 36px 48px;
+  box-sizing: border-box;
+}
+
+.catalogo-page .app-title h1 {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 500;
+  color: #1a1a1a;
+  margin-bottom: 32px;
+  font-style: italic;
+}
+
 .container-cards {
-    display: grid;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 1024px) {
+  .container-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .catalogo-page {
+    padding: 24px 16px;
+  }
+
+  .container-cards {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
-    padding: 1.5rem;
-
-}
-
-/* Tablet: 2 cards por fila */
-@media (min-width: 640px) {
-    .container-cards {
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 1.5rem;
-        padding: 2rem;
-    }
-}
-
-/* Desktop: 3-4 cards por fila, centrado */
-@media (min-width: 1024px) {
-    .container-cards {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
-        gap: 2rem;
-        padding: 2rem 4rem;
-        justify-items: center;
-    }
+  }
 }

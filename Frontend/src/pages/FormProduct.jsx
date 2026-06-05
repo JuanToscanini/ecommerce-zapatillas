@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import '../assets/css/FormProduct.css';
@@ -7,6 +8,18 @@ import Form from '../components/Form';
 const API_URL = import.meta.env.VITE_API_BASE_URL;
 
 function FormProduct() {
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        try {
+            const token = localStorage.getItem('token');
+            if (!token) { navigate('/'); return; }
+            const role = JSON.parse(atob(token.split('.')[1])).role;
+            if (role !== 'admin') navigate('/');
+        } catch {
+            navigate('/');
+        }
+    }, []);
     const [product, setProduct] = useState({
         name: '',
         details: '',
