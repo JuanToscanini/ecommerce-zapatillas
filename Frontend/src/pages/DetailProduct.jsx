@@ -49,7 +49,7 @@ function DetailProduct() {
     }, [id]);
 
     if (loading) return <div>Cargando...</div>;
-    if (error) return <div>{error}</div>;
+    if (error) return <div>error</div>;
     if (!product) return <div>Producto no encontrado</div>;
 
     return (

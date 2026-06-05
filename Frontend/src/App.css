@@ -1,16 +1,35 @@
-/* Layout global con NavBar y Footer fijos */
+/* ==========================================================================
+  1. ESTILOS GLOBALES (Selectores de Tipo)
+   ========================================================================== */
+html, body {
+  margin: 0;
+  padding: 0;
+  /* 🎨 Centralizamos el color de fondo y de texto para toda la web */
+  background-color: #9e9e9e; /* El color oscuro que usa tu NavBar */
+  color: #ffffff;
+  font-family: sans-serif; /* O la tipografía que prefieras */
+}
+
+/* ==========================================================================
+  2. ESTRUCTURA BASE (Layout con Flexbox)
+   ========================================================================== */
 .app-container {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 100vh; /* Mide como mínimo el alto de la pantalla completa */
 }
 
 .main-content {
-  flex: 1;
+  flex: 1; /* Absorbe todo el espacio vacío y empuja el Footer al fondo */
   display: flex;
   flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
 }
 
+/* ==========================================================================
+  3. COMPONENTES COMUNES Y MEDIAS QUERIES
+   ========================================================================== */
 .app-title {
   display: flex;
   justify-content: center;
@@ -48,4 +67,3 @@
     font-size: 2.5rem;
   }
 }
-

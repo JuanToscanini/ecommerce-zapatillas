@@ -9,6 +9,8 @@ const cats = [
     { href: '/catalogo/ninos', text: 'Niños' },
     { href: '/contacto', text: 'Contacto' },
     { href: '/crear-producto', text: 'Crear Producto' },
+    { href: '/carrito', text: 'Carrito' },
+    { href: '/login', text: 'Login' },
 ];
 
 function NavBar({ cantidadCarrito }) {
