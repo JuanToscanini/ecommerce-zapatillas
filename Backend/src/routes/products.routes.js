@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const { authMiddleware, adminMiddleware } = require('../middlewares/auth.middleware');
 
 const {
     getProducts,
@@ -11,8 +12,8 @@ const {
 
 router.get('/', getProducts);
 router.get('/:id', getProductById);
-router.post('/', createProduct);
-router.put('/:id', updateProduct);
-router.delete('/:id', deleteProduct);
+router.post('/', authMiddleware, adminMiddleware, createProduct);
+router.put('/:id', authMiddleware, adminMiddleware, updateProduct);
+router.delete('/:id', authMiddleware, adminMiddleware, deleteProduct);
 
 module.exports = router;

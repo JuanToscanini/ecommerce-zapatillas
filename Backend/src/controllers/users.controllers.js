@@ -1,3 +1,4 @@
+const bcrypt = require('bcrypt');
 const User = require('../models/user.model');
 
 //clase conectada a mongo
@@ -29,7 +30,9 @@ const getUserById = async (req, res) => {
 
 const createUser = async (req, res) => {
     try {
-        const nuevoUser = new User(req.body);
+        const { password, ...rest } = req.body;
+        const hashedPassword = await bcrypt.hash(password, 10);
+        const nuevoUser = new User({ ...rest, password: hashedPassword });
         await nuevoUser.save();
         res.json(nuevoUser);
     } catch (error) {
@@ -61,6 +64,18 @@ const deleteUser = async (req, res) => {
     }
 };
 
+const getMe = async (req, res) => {
+    try {
+        const user = await User.findById(req.usuario.id).select('-password');
+        if (!user) {
+            return res.status(404).json({ error: 'Usuario no encontrado' });
+        }
+        res.json(user);
+    } catch (error) {
+        res.status(500).json({ error: 'Error al obtener el usuario' });
+    }
+};
+
 const updateUserById = async (req, res) => {
     try {
         const user = await User.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
@@ -86,6 +101,7 @@ const updateUserById = async (req, res) => {
 module.exports = {
     getUsers,
     getUserById,
+    getMe,
     createUser,
     deleteUser,
     updateUserById

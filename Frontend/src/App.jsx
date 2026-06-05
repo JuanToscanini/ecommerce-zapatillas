@@ -7,6 +7,9 @@ import Footer from './components/Footer';
 import './App.css';
 import FormProduct from './pages/FormProduct';
 import DetailProduct from './pages/DetailProduct';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import Users from './pages/Users';
 
 function App() {
   const links = [
@@ -29,6 +32,9 @@ function App() {
           <Route path="/catalogo/:categoria" element={<Catalogo />} />
           <Route path="/crear-producto" element={<FormProduct />} />
           <Route path="/producto/:id" element={<DetailProduct />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/usuarios" element={<Users />} />
         </Routes>
       </main>
       <Footer />
