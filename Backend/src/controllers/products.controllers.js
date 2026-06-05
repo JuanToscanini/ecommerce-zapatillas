@@ -89,10 +89,20 @@ const updateProduct = async (req, res) => {
     }
 };
 
+const getInactiveProducts = async (req, res) => {
+    try {
+        const products = await Product.find({ active: false });
+        res.json(products);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
 module.exports = {
     getProducts,
     getProductById,
     createProduct,
     deleteProduct,
-    updateProduct
+    updateProduct,
+    getInactiveProducts
 };
