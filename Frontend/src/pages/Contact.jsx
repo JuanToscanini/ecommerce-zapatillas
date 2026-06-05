@@ -1,6 +1,21 @@
+import { useState } from 'react';
 import '../assets/css/Contact.css';
+import Form from '../components/Form';
 
 function Contact() {
+  const [contactData, setContactData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+  const [status, setStatus] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setStatus('¡Mensaje enviado! Nos comunicaremos contigo pronto.');
+    setContactData({ name: '', email: '', message: '' });
+  };
+
   return (
     <div className="contact-page">
       <div className="contact-container">
@@ -31,10 +46,28 @@ function Contact() {
         </div>
 
         <div className="contact-form">
-          <input className="contact-input" type="text" placeholder="Nombre" />
-          <input className="contact-input" type="email" placeholder="Email" />
-          <textarea className="contact-textarea" placeholder="Mensaje..."></textarea>
-          <button className="contact-btn">Enviar</button>
+          <Form title="Enviar mensaje" onSubmit={handleSubmit} submitText="Enviar" message={status}>
+            <input
+              className="contact-input"
+              type="text"
+              placeholder="Nombre"
+              value={contactData.name}
+              onChange={(e) => setContactData({ ...contactData, name: e.target.value })}
+            />
+            <input
+              className="contact-input"
+              type="email"
+              placeholder="Email"
+              value={contactData.email}
+              onChange={(e) => setContactData({ ...contactData, email: e.target.value })}
+            />
+            <textarea
+              className="contact-textarea"
+              placeholder="Mensaje..."
+              value={contactData.message}
+              onChange={(e) => setContactData({ ...contactData, message: e.target.value })}
+            />
+          </Form>
         </div>
 
       </div>

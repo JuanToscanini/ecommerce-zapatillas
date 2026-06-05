@@ -2,6 +2,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import '../assets/css/FormProduct.css';
+import Form from '../components/Form';
 
 const API_URL = import.meta.env.VITE_API_BASE_URL;
 
@@ -50,7 +51,7 @@ function FormProduct() {
             <div className="app-title">
                 <h1>Crear Producto</h1>
             </div>
-            <form className="form-product" onSubmit={handleSubmit}>
+            <Form title="Nuevo producto" onSubmit={handleSubmit} submitText="Crear" message={mensaje} error={error}>
                 <input type="text" placeholder="Nombre" value={product.name} onChange={(e) => setProduct({...product, name: e.target.value})} />
                 <input type="number" placeholder="Precio" value={product.price} onChange={(e) => setProduct({...product, price: e.target.value})} />
                 <input type="text" placeholder="Descripción" value={product.details} onChange={(e) => setProduct({...product, details: e.target.value})} />
@@ -62,10 +63,7 @@ function FormProduct() {
                     Activo
                     <input type="checkbox" checked={product.active} onChange={(e) => setProduct({...product, active: e.target.checked})} />
                 </label>
-                <button type="submit">Crear</button>
-                {mensaje && <p style={{ color: 'green' }}>{mensaje}</p>}
-                {error && <p style={{ color: 'red' }}>{error}</p>}
-            </form>
+            </Form>
         </main>
     );
 }
