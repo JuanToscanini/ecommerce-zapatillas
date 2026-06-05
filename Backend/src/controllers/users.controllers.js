@@ -78,12 +78,32 @@ const getMe = async (req, res) => {
 
 const updateUserById = async (req, res) => {
     try {
-        const user = await User.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
+        const { password, currentPassword, ...rest } = req.body;
+
+        const user = await User.findById(req.params.id);
         if (!user) {
-            res.status(404).json({ error: 'User no encontrado' });
-            return
+            return res.status(404).json({ error: 'User no encontrado' });
         }
-        res.json(user);
+
+        if (password) {
+            // Si es el propio usuario cambiando su contraseña, verificar la actual
+            const isSelf = req.usuario?.id === req.params.id;
+            if (isSelf) {
+                if (!currentPassword) {
+                    return res.status(400).json({ error: 'Ingresá tu contraseña actual' });
+                }
+                const match = await bcrypt.compare(currentPassword, user.password);
+                if (!match) {
+                    return res.status(401).json({ error: 'La contraseña actual es incorrecta' });
+                }
+            }
+            rest.password = await bcrypt.hash(password, 10);
+        }
+
+        Object.assign(user, rest);
+        await user.save();
+
+        res.json({ _id: user._id, name: user.name, email: user.email, role: user.role });
     } catch (error) {
         if(error.code === 11000){
             res.status(409).json({error: "El correo electrónico ya se encuentra registrado"})
@@ -93,7 +113,7 @@ const updateUserById = async (req, res) => {
             res.status(400).json({error:"Datos obligatorios inválidos"})
             return
         }
-        res.status(500).json({ error: 'Error al actualizar el usuario' });       
+        res.status(500).json({ error: 'Error al actualizar el usuario' });
     }
 };
 

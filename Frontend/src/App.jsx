@@ -10,6 +10,9 @@ import DetailProduct from './pages/DetailProduct';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Users from './pages/Users';
+import MyProfile from './pages/MyProfile';
+import EditProduct from './pages/EditProduct';
+import EditUser from './pages/EditUser';
 
 function App() {
   const links = [
@@ -35,6 +38,9 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/usuarios" element={<Users />} />
+          <Route path="/mi-perfil" element={<MyProfile />} />
+          <Route path="/productos/editar/:id" element={<EditProduct />} />
+          <Route path="/usuarios/editar/:id" element={<EditUser />} />
         </Routes>
       </main>
       <Footer />

@@ -42,6 +42,8 @@ html, body {
 
 .app-title h1 {
   font-size: 1.5rem;
+  font-family: 'Bebas Neue',sans-serif;
+  text-transform: uppercase;
 }
 
 .footer {

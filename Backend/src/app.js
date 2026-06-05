@@ -10,7 +10,7 @@ const cors = require('cors');
 const app = express();
 
 // Middleware para parsear JSON
-app.use(cors({origin:"http://localhost:5173"}));
+app.use(cors({origin: ["http://localhost:5173", "http://localhost:5174"]}));
 app.use(logger);
 app.use(express.json());
 app.use('/products', productsRoutes);

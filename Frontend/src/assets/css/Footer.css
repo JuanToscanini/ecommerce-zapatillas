@@ -11,10 +11,15 @@
   font-size: 18px; 
   font-weight: 500; 
 }
-.footer-icons { 
+.footer-icons {
   display: flex;
-  gap: 16px; 
-  font-size: 22px; 
+  gap: 16px;
+  font-size: 22px;
+  color: #123499;
+}
+
+.footer-icons a {
+  color: #123499;
 }
 .footer-copy { color: #555555; 
   font-size: 12px; 

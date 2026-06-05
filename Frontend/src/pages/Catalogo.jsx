@@ -32,13 +32,20 @@ function Catalogo() {
         ? products
         : products.filter((p) => p.category.toLowerCase() === categoria.toLowerCase());
 
+    const categoriaMap = {
+        hombres: 'Hombre',
+        mujer: 'Mujer',
+        ninos: 'Niños',
+    };
+    const categoriaLabel = categoriaMap[categoria?.toLowerCase()] || null;
+
     if (loading) return <div>Cargando productos...</div>;
     if (error) return <div>{error}</div>;
 
     return (
         <div className="catalogo-page">
             <div className="app-title">
-                <h1>Store Shop</h1>
+                <h1>{categoriaLabel ? `Productos de ${categoriaLabel}` : 'Store Shop'}</h1>
             </div>
             <div className="container-cards">
                 {productosFiltrados.map((product) => (

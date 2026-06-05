@@ -74,6 +74,12 @@ function NavBar({ cantidadCarrito }) {
                     </NavLink>
                 )}
 
+                {isLoggedIn && (
+                    <NavLink to="/mi-perfil" className="navbar-action-link">
+                        Mi perfil
+                    </NavLink>
+                )}
+
                 {isLoggedIn ? (
                     <button className="navbar-auth-btn" onClick={logout}>
                         Cerrar sesión

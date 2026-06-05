@@ -1,0 +1,56 @@
+.edituser-page {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+.edituser-card {
+  background: #d6d8db;
+  border-radius: 16px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 440px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.edituser-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: #1a1a1a;
+  text-align: center;
+}
+.edituser-form { display: flex; flex-direction: column; gap: 12px; }
+.edituser-input {
+  background: #eaebec;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 14px;
+  color: #333;
+  width: 100%;
+  box-sizing: border-box;
+}
+.edituser-btn {
+  background: #1a1a1a;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 4px;
+}
+.edituser-btn:hover { background: #333; }
+.edituser-btn-cancel {
+  background: transparent;
+  color: #555;
+  border: 1px solid #aaa;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.edituser-btn-cancel:hover { border-color: #555; color: #1a1a1a; }

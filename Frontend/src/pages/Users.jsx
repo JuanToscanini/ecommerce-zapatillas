@@ -75,6 +75,7 @@ function Users() {
                             <th>Nombre</th>
                             <th>Email</th>
                             <th>Rol</th>
+                            <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -83,6 +84,14 @@ function Users() {
                                 <td>{u.name}</td>
                                 <td>{u.email}</td>
                                 <td>{u.role}</td>
+                                <td>
+                                    <button
+                                        className="users-edit-btn"
+                                        onClick={() => navigate(`/usuarios/editar/${u._id}`)}
+                                    >
+                                        Editar
+                                    </button>
+                                </td>
                             </tr>
                         ))}
                     </tbody>
