@@ -61,9 +61,6 @@ function FormProduct() {
 
     return (
         <main>
-            <div className="app-title">
-                <h1>Crear Producto</h1>
-            </div>
             <Form title="Nuevo producto" onSubmit={handleSubmit} submitText="Crear" message={mensaje} error={error}>
                 <input type="text" placeholder="Nombre" value={product.name} onChange={(e) => setProduct({...product, name: e.target.value})} />
                 <input type="number" placeholder="Precio" value={product.price} onChange={(e) => setProduct({...product, price: e.target.value})} />

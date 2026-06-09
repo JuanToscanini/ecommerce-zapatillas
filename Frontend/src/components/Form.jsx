@@ -1,6 +1,6 @@
 import '../assets/css/Form.css';
 
-function Form({ title, children, onSubmit, submitText = 'Enviar', message, error, className = '' }) {
+function Form({ title, children, onSubmit, submitText = 'Enviar', message, error, className = '', submitDisabled = false }) {
   return (
     <div className={`form-card ${className}`}>
       {title && (
@@ -11,7 +11,7 @@ function Form({ title, children, onSubmit, submitText = 'Enviar', message, error
 
       <form className="form-wrapper" onSubmit={onSubmit}>
         {children}
-        <button type="submit" className="form-submit">
+        <button type="submit" className="form-submit" disabled={submitDisabled}>
           {submitText}
         </button>
         {message && <p className="form-message success">{message}</p>}

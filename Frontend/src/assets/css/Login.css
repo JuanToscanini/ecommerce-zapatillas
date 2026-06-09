@@ -1,12 +1,14 @@
 .login-page {
   min-height: 80vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 2rem;
+  gap: 1rem;
 }
 
-.login-card {
+.login-form-card {
   background: #d6d8db;
   border-radius: 12px;
   padding: 2rem;
@@ -17,20 +19,20 @@
   gap: 1.5rem;
 }
 
-.login-title {
+.login-form-card .form-title h1 {
   font-size: 22px;
   font-weight: 600;
   color: #1a1a1a;
   text-align: center;
 }
 
-.login-form {
+.login-form-card .form-wrapper {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-.login-input {
+.login-form-card .login-input {
   background: #eaebec;
   border: none;
   border-radius: 8px;
@@ -41,7 +43,7 @@
   box-sizing: border-box;
 }
 
-.login-btn {
+.login-form-card .form-submit {
   background: #1a1a1a;
   color: #fff;
   border: none;
@@ -53,7 +55,7 @@
   margin-top: 4px;
 }
 
-.login-btn:hover {
+.login-form-card .form-submit:hover {
   background: #333;
 }
 

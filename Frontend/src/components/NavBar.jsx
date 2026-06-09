@@ -6,7 +6,8 @@ const categorias = [
     { href: '/', text: 'Inicio', end: true },
     { href: '/catalogo/hombres', text: 'Hombre' },
     { href: '/catalogo/mujer', text: 'Mujer' },
-    { href: '/catalogo/ninos', text: 'Niños' }
+    { href: '/catalogo/ninos', text: 'Niños' },
+    { href: '/contacto', text: 'Contacto' }
 ];
 
 function getTokenData() {
@@ -71,13 +72,13 @@ function NavBar({ cantidadCarrito }) {
                 {isAdmin && (
                     <NavLink to="/usuarios" className="navbar-action-link">
                         Usuarios
-                    </NavLink>,
-                    <NavLink to="/crear-producto" className="navbar-action-link">
-                        Crear Producto
                     </NavLink>
-
                 )}
-
+                {isAdmin && (
+                    <NavLink to="/crear-producto" className="navbar-action-link">
+                        Nuevo producto
+                    </NavLink>
+                )}
                 {isLoggedIn && (
                     <NavLink to="/mi-perfil" className="navbar-action-link">
                         Mi perfil
