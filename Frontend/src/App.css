@@ -29,6 +29,38 @@ html, body {
   box-sizing: border-box;
 }
 
+/* =========================================
+  🪄 LA MAGIA: MODO FIJO (Tipo App Móvil)
+   ========================================= */
+
+.layout-fijo {
+  /* Clavamos la altura EXACTA al 100% de la pantalla, ni un píxel más */
+  height: 100vh; 
+  /* Evitamos que el body entero haga scroll */
+  overflow: hidden; 
+}
+
+/* Solo cuando el main está dentro del layout fijo... */
+.layout-fijo .main-content {
+  /* Le decimos: "Si tu contenido interno es más grande que tú, mostrá una barra de scroll SOLO aquí adentro" */
+  overflow-y: auto; 
+}
+
+/* =========================================
+  MODO NORMAL (Tipo Web Clásica)
+   ========================================= */
+
+.layout-normal {
+  /* No necesitamos bloquear nada, dejamos que la página crezca naturalmente */
+  height: auto; 
+  overflow: visible;
+}
+
+.layout-normal .main-content {
+  /* El contenido fluye normal, el scroll lo hace el navegador por defecto */
+  overflow-y: visible; 
+}
+
 /* ==========================================================================
   3. COMPONENTES COMUNES Y MEDIAS QUERIES
    ========================================================================== */

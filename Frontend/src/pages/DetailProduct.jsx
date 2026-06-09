@@ -54,9 +54,6 @@ function DetailProduct() {
 
     return (
         <main>
-            <div className="app-title">
-                <h1>Detalle del Producto</h1>
-            </div>
             <div className="product-detail-container">
                 <div className="product-image-section">
                     <img src={product.image} alt={product.name} />

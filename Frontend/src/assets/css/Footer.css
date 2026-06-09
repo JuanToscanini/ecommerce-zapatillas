@@ -6,11 +6,7 @@
   align-items: center;
   gap: 1rem;
 }
-.footer-brand {
-  color: #ffffff; 
-  font-size: 18px; 
-  font-weight: 500; 
-}
+
 .footer-icons {
   display: flex;
   gap: 16px;

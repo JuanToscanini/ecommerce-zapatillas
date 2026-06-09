@@ -5,7 +5,6 @@ import "../assets/css/Footer.css";
 function Footer() {
     return (
         <footer className="footer">
-            <span className="footer-brand">Store Shop</span>
             <div className="footer-icons">
                 <a href="#"><FaInstagram /></a>
                 <a href="#"><FaFacebook /></a>

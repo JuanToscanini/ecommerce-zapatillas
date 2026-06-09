@@ -6,7 +6,7 @@ const categorias = [
     { href: '/', text: 'Inicio', end: true },
     { href: '/catalogo/hombres', text: 'Hombre' },
     { href: '/catalogo/mujer', text: 'Mujer' },
-    { href: '/catalogo/ninos', text: 'Niños' },
+    { href: '/catalogo/ninos', text: 'Niños' }
 ];
 
 function getTokenData() {
@@ -71,7 +71,11 @@ function NavBar({ cantidadCarrito }) {
                 {isAdmin && (
                     <NavLink to="/usuarios" className="navbar-action-link">
                         Usuarios
+                    </NavLink>,
+                    <NavLink to="/crear-producto" className="navbar-action-link">
+                        Crear Producto
                     </NavLink>
+
                 )}
 
                 {isLoggedIn && (

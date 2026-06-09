@@ -2,33 +2,26 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import '../assets/css/FormProduct.css';
 import Form from '../components/Form';
 
 const API_URL = import.meta.env.VITE_API_BASE_URL;
 
 function FormProduct() {
     const navigate = useNavigate();
+    
+    //FALTABA ESTA LÍNEA: Buscar el dato en el disco duro
+    const userString = localStorage.getItem('user'); 
+    const user = userString ? JSON.parse(userString) : null;
 
     useEffect(() => {
-        try {
-            const token = localStorage.getItem('token');
-            if (!token) { navigate('/'); return; }
-            const role = JSON.parse(atob(token.split('.')[1])).role;
-            if (role !== 'admin') navigate('/');
-        } catch {
-            navigate('/');
+        if (!user || user.role !== 'admin') {
+            navigate('/'); 
         }
-    }, []);
+    }, [navigate, user]);
+    
     const [product, setProduct] = useState({
-        name: '',
-        details: '',
-        price: '',
-        image: '',
-        badge: '',
-        stock: '',
-        category: '',
-        active: true
+        name: '', details: '', price: '', image: '',
+        badge: '', stock: '', category: '', active: true
     });
     const [mensaje, setMensaje] = useState('');
     const [error, setError] = useState('');
@@ -37,23 +30,30 @@ function FormProduct() {
         e.preventDefault();
 
         try {
-            await axios.post(`${API_URL}/products`, product);
+            // 2. FALTABA ESTO: Agarrar el token sellado
+            const token = localStorage.getItem('token');
+
+            // 3. FALTABA ESTO: Mandar el pasaporte (headers) a Axios
+            await axios.post(
+                `${API_URL}/products`, 
+                product,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                }
+            );
+
             setProduct({
-                name: '',
-                details: '',
-                price: '',
-                image: '',
-                badge: '',
-                stock: '',
-                category: '',
-                active: true
+                name: '', details: '', price: '', image: '',
+                badge: '', stock: '', category: '', active: true
             });
             toast.success('Producto guardado correctamente');
             setMensaje('Producto guardado correctamente');
             setError('');
         } catch (err) {
             console.error(err);
-            toast.error('Error al guardar el producto');
+            toast.error(err.response?.data?.error || 'Error al guardar el producto');
             setError('Error al guardar el producto');
             setMensaje('');
         }
