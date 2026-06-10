@@ -1,17 +1,6 @@
 .catalogo-page {
-  background: #9e9e9e;
-  min-height: 100vh;
   padding: 36px 48px;
   box-sizing: border-box;
-}
-
-.catalogo-page .app-title h1 {
-  text-align: center;
-  font-size: 28px;
-  font-weight: 500;
-  color: #1a1a1a;
-  margin-bottom: 32px;
-  font-style: italic;
 }
 
 .container-cards {

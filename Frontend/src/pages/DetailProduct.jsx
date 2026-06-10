@@ -80,7 +80,7 @@ function DetailProduct() {
                                 className="size-input"
                             />
                         </label>
-                        <button className="add-to-cart-btn" onClick={handleAddToCart}>Agregar al carrito</button>
+                        <button className="app-btn" onClick={handleAddToCart}>Agregar al carrito</button>
                     </div>
                 </div>
             </div>

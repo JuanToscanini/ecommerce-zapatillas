@@ -4,7 +4,6 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import { jwtDecode } from 'jwt-decode';
 import Form from '../components/Form';
-import '../assets/css/Login.css';
 
 const API_URL = import.meta.env.VITE_API_BASE_URL;
 
@@ -35,30 +34,28 @@ function Login() {
     };
 
     return (
-        <div className="login-page">
+        <div className="login-page auth-page">
             <Form
                 title="Iniciar sesión"
                 onSubmit={handleSubmit}
                 submitText={loading ? 'Ingresando...' : 'Entrar'}
                 submitDisabled={loading}
-                className="login-form-card"
+                className="auth-form-card"
             >
                 <input
-                    className="login-input"
                     type="email"
                     placeholder="Email"
                     value={form.email}
                     onChange={(e) => setForm({ ...form, email: e.target.value })}
                 />
                 <input
-                    className="login-input"
                     type="password"
                     placeholder="Contraseña"
                     value={form.password}
                     onChange={(e) => setForm({ ...form, password: e.target.value })}
                 />
             </Form>
-            <button className="login-btn-secondary" type="button" onClick={() => navigate('/register')}>
+            <button className="app-btn" type="button" onClick={() => navigate('/register')}>
                 Crear cuenta
             </button>
         </div>

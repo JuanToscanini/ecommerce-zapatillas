@@ -70,27 +70,27 @@ function NavBar({ cantidadCarrito }) {
                 </button>
 
                 {isAdmin && (
-                    <NavLink to="/usuarios" className="navbar-action-link">
+                    <NavLink to="/usuarios" className="navbar-action-btn">
                         Usuarios
                     </NavLink>
                 )}
                 {isAdmin && (
-                    <NavLink to="/crear-producto" className="navbar-action-link">
+                    <NavLink to="/crear-producto" className="navbar-action-btn">
                         Nuevo producto
                     </NavLink>
                 )}
                 {isLoggedIn && (
-                    <NavLink to="/mi-perfil" className="navbar-action-link">
+                    <NavLink to="/mi-perfil" className="navbar-action-btn">
                         Mi perfil
                     </NavLink>
                 )}
 
                 {isLoggedIn ? (
-                    <button className="navbar-auth-btn" onClick={logout}>
+                    <button className="navbar-action-btn" onClick={logout}>
                         Cerrar sesión
                     </button>
                 ) : (
-                    <NavLink to="/login" className="navbar-auth-btn">
+                    <NavLink to="/login" className="navbar-action-btn">
                         Iniciar sesión
                     </NavLink>
                 )}

@@ -34,7 +34,7 @@ function ProductCard({id, name, details, price, image, stock, category, active, 
                 </div>
                 {isAdmin && (
                     <button
-                        className="card-edit-btn"
+                        className="app-btn app-btn--small"
                         onClick={(e) => { e.stopPropagation(); navigate(`/productos/editar/${id}`); }}
                     >
                         Editar

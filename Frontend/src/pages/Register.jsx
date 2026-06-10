@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import '../assets/css/Register.css';
+import Form from '../components/Form';
 
 const API_URL = import.meta.env.VITE_API_BASE_URL;
 
@@ -30,39 +30,36 @@ function Register() {
     };
 
     return (
-        <div className="register-page">
-            <div className="register-card">
-                <h2 className="register-title">Crear cuenta</h2>
-                <form className="register-form" onSubmit={handleSubmit}>
-                    <input
-                        className="register-input"
-                        type="text"
-                        placeholder="Nombre"
-                        value={form.name}
-                        onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    />
-                    <input
-                        className="register-input"
-                        type="email"
-                        placeholder="Email"
-                        value={form.email}
-                        onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    />
-                    <input
-                        className="register-input"
-                        type="password"
-                        placeholder="Contraseña"
-                        value={form.password}
-                        onChange={(e) => setForm({ ...form, password: e.target.value })}
-                    />
-                    <button className="register-btn" type="submit" disabled={loading}>
-                        {loading ? 'Registrando...' : 'Registrarse'}
-                    </button>
-                </form>
-                <p className="register-login">
-                    ¿Ya tenés cuenta? <a href="/login">Iniciar sesión</a>
-                </p>
-            </div>
+        <div className="register-page auth-page">
+            <Form
+                title="Crear cuenta"
+                onSubmit={handleSubmit}
+                submitText={loading ? 'Registrando...' : 'Registrarse'}
+                submitDisabled={loading}
+                className="auth-form-card"
+            >
+                <input
+                    type="text"
+                    placeholder="Nombre"
+                    value={form.name}
+                    onChange={(e) => setForm({ ...form, name: e.target.value })}
+                />
+                <input
+                    type="email"
+                    placeholder="Email"
+                    value={form.email}
+                    onChange={(e) => setForm({ ...form, email: e.target.value })}
+                />
+                <input
+                    type="password"
+                    placeholder="Contraseña"
+                    value={form.password}
+                    onChange={(e) => setForm({ ...form, password: e.target.value })}
+                />
+            </Form>
+            <p className="auth-note">
+                ¿Ya tenés cuenta? <a href="/login">Iniciar sesión</a>
+            </p>
         </div>
     );
 }

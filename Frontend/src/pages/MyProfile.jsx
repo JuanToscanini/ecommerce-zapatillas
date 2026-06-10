@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import Form from '../components/Form';
 import '../assets/css/MyProfile.css';
 
 const API_URL = import.meta.env.VITE_API_BASE_URL;
@@ -114,11 +115,9 @@ function MyProfile() {
     return (
         <div className="profile-page">
             <div className="profile-card">
-                <h2 className="profile-title">Mi perfil</h2>
+                <h2 className="page-heading">Mi perfil</h2>
 
-                {/* Sección 1 — Datos personales */}
-                <form className="profile-form" onSubmit={handleSaveDatos}>
-                    <p className="profile-section">Datos personales</p>
+                <Form title="Datos personales" onSubmit={handleSaveDatos} submitText="Guardar datos" className="profile-form-card">
 
                     <div className="profile-field">
                         <div className="profile-label-row">
@@ -133,7 +132,7 @@ function MyProfile() {
                             </label>
                         </div>
                         <input
-                            className={`profile-input${editing.name ? '' : ' profile-input-disabled'}`}
+                            className={editing.name ? '' : 'profile-input-disabled'}
                             type="text"
                             placeholder="Tu nombre"
                             value={form.name}
@@ -155,7 +154,7 @@ function MyProfile() {
                             </label>
                         </div>
                         <input
-                            className={`profile-input${editing.email ? '' : ' profile-input-disabled'}`}
+                            className={editing.email ? '' : 'profile-input-disabled'}
                             type="email"
                             placeholder="tu@email.com"
                             value={form.email}
@@ -164,17 +163,13 @@ function MyProfile() {
                         />
                     </div>
 
-                    <button className="profile-btn" type="submit">Guardar datos</button>
-                </form>
+                </Form>
 
-                {/* Sección 2 — Cambiar contraseña */}
-                <form className="profile-form" onSubmit={handleSavePassword}>
-                    <p className="profile-section">Cambiar contraseña</p>
+                <Form title="Cambiar contraseña" onSubmit={handleSavePassword} submitText="Cambiar contraseña" className="profile-form-card">
 
                     <div className="profile-field">
                         <label className="profile-label">Contraseña actual</label>
                         <input
-                            className="profile-input"
                             type="password"
                             placeholder="••••••••"
                             value={passwords.current}
@@ -185,7 +180,6 @@ function MyProfile() {
                     <div className="profile-field">
                         <label className="profile-label">Nueva contraseña</label>
                         <input
-                            className="profile-input"
                             type="password"
                             placeholder="••••••••"
                             value={passwords.newPass}
@@ -196,7 +190,6 @@ function MyProfile() {
                     <div className="profile-field">
                         <label className="profile-label">Repetir nueva contraseña</label>
                         <input
-                            className="profile-input"
                             type="password"
                             placeholder="••••••••"
                             value={passwords.repeat}
@@ -204,8 +197,7 @@ function MyProfile() {
                         />
                     </div>
 
-                    <button className="profile-btn" type="submit">Cambiar contraseña</button>
-                </form>
+                </Form>
 
             </div>
         </div>

@@ -1,23 +1,9 @@
-.contact-page {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-}
-
 .contact-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
   width: 100%;
   max-width: 860px;
-}
-
-.contact-title {
-  font-size: 24px;
-  font-weight: 600;
-  color: #1a1a1a;
-  margin-bottom: 1.5rem;
 }
 .contact-item {
   display: flex;

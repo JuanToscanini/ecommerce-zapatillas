@@ -21,7 +21,7 @@ function Contact() {
       <div className="contact-container">
 
         <div className="contact-info">
-          <h2 className="contact-title">Contactanos</h2>
+          <h2 className="page-heading">Contactanos</h2>
           <div className="contact-item">
             <div className="contact-text">
               <span>contacto@storeshop.com</span>

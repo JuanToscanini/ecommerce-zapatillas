@@ -99,40 +99,22 @@
   justify-content: center;
 }
 
-.navbar-action-link {
+.navbar-action-btn {
   color: #bbb;
   background: transparent;
   border: 1px solid #333;
   border-radius: 20px;
   padding: 8px 22px;
   font-size: 14px;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  transition: color 0.2s, border-color 0.2s;
-}
-
-.navbar-action-link:hover {
-  color: #fff;
-  border-color: #666;
-}
-
-.navbar-auth-btn {
-  color: #bbb;
-  background: transparent;
-  border: 1px solid #333;
-  border-radius: 20px;
-  padding: 8px 22px;
-  font-size: 14px;
-  cursor: pointer;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
   transition: color 0.2s, border-color 0.2s;
   font-family: inherit;
+  cursor: pointer;
 }
 
-.navbar-auth-btn:hover {
+.navbar-action-btn:hover {
   color: #fff;
   border-color: #666;
 }

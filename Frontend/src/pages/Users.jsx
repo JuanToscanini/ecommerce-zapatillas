@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import Form from '../components/Form';
 import '../assets/css/Users.css';
 
 const API_URL = import.meta.env.VITE_API_BASE_URL;
@@ -68,7 +69,7 @@ function Users() {
     return (
         <div className="users-page">
             <div className="users-container">
-                <h2 className="users-title">Usuarios</h2>
+                <h2 className="page-heading">Usuarios</h2>
                 <table className="users-table">
                     <thead>
                         <tr>
@@ -86,7 +87,7 @@ function Users() {
                                 <td>{u.role}</td>
                                 <td>
                                     <button
-                                        className="users-edit-btn"
+                                        className="app-btn"
                                         onClick={() => navigate(`/usuarios/editar/${u._id}`)}
                                     >
                                         Editar
@@ -97,17 +98,15 @@ function Users() {
                     </tbody>
                 </table>
 
-                <h3 className="users-subtitle">Nuevo usuario</h3>
-                <form className="users-form" onSubmit={handleSubmit}>
-                    <input className="users-input" type="text" placeholder="Nombre" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
-                    <input className="users-input" type="email" placeholder="Email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} />
-                    <input className="users-input" type="password" placeholder="Contraseña" value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })} />
-                    <select className="users-input" value={form.role} onChange={(e) => setForm({ ...form, role: e.target.value })}>
+                <Form title="Nuevo usuario" onSubmit={handleSubmit} submitText="Crear usuario" className="users-form-card">
+                    <input type="text" placeholder="Nombre" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
+                    <input type="email" placeholder="Email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} />
+                    <input type="password" placeholder="Contraseña" value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })} />
+                    <select value={form.role} onChange={(e) => setForm({ ...form, role: e.target.value })}>
                         <option value="user">Cliente</option>
                         <option value="admin">Admin</option>
                     </select>
-                    <button className="users-btn" type="submit">Crear usuario</button>
-                </form>
+                </Form>
             </div>
         </div>
     );

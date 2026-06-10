@@ -11,7 +11,7 @@ function Form({ title, children, onSubmit, submitText = 'Enviar', message, error
 
       <form className="form-wrapper" onSubmit={onSubmit}>
         {children}
-        <button type="submit" className="form-submit" disabled={submitDisabled}>
+        <button type="submit" className="app-btn" disabled={submitDisabled}>
           {submitText}
         </button>
         {message && <p className="form-message success">{message}</p>}
