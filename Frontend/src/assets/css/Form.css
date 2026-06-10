@@ -1,7 +1,7 @@
 .form-card {
   width: 100%;
   max-width: var(--form-card-max-width, 500px);
-  background: var(--form-card-bg, #f4f5f7);
+  background: var(--form-card-bg, var(--color-surface-soft));
   border-radius: var(--form-card-radius, 18px);
   padding: var(--form-card-padding, 2rem);
   margin: auto;
@@ -13,7 +13,7 @@
 .form-title h1 {
   font-size: var(--form-title-size, 2rem);
   font-weight: var(--form-title-weight, 700);
-  color: var(--form-title-color, #1a1a1a);
+  color: var(--form-title-color, var(--color-text));
   margin: var(--form-title-margin, 0);
   text-align: var(--form-title-align, left);
 }
@@ -29,12 +29,12 @@
 .form-wrapper textarea,
 .form-wrapper select {
   width: 100%;
-  background: var(--form-control-bg, #ffffff);
-  border: var(--form-control-border, 1px solid #d1d5db);
+  background: var(--form-control-bg, var(--color-accent-contrast));
+  border: var(--form-control-border, 1px solid var(--color-border));
   border-radius: var(--form-control-radius, 12px);
   padding: var(--form-control-padding, 0.95rem 1rem);
   font-size: var(--form-control-size, 0.95rem);
-  color: var(--form-control-color, #111827);
+  color: var(--form-control-color, var(--color-text));
   box-sizing: border-box;
 }
 
@@ -48,15 +48,15 @@
   flex-direction: column;
   gap: var(--form-label-gap, 0.5rem);
   font-size: var(--form-label-size, 0.95rem);
-  color: var(--form-label-color, #334155);
+  color: var(--form-label-color, var(--color-text-muted));
 }
 
 .app-btn {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  background: var(--form-submit-bg, #111827);
-  color: var(--form-submit-color, #ffffff);
+  background: var(--form-submit-bg, var(--color-text));
+  color: var(--form-submit-color, var(--color-accent-contrast));
   border: none;
   border-radius: var(--form-submit-radius, 12px);
   padding: var(--form-submit-padding, 0.95rem 1.5rem);
@@ -95,9 +95,9 @@
 }
 
 .form-message.success {
-  color: #047857;
+  color: var(--color-success);
 }
 
 .form-message.error {
-  color: #b91c1c;
+  color: var(--color-error);
 }

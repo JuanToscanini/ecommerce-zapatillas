@@ -37,13 +37,13 @@
 .product-price {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #000;
+    color: var(--color-text);
 }
 
 .product-badge {
     display: inline-block;
-    background: #03f3cb;
-    color: #000;
+    background: var(--color-accent);
+    color: var(--color-accent-contrast);
     padding: 0.25rem 0.75rem;
     border-radius: 20px;
     font-size: 0.875rem;
@@ -53,7 +53,7 @@
 
 .product-description {
     font-size: 1rem;
-    color: #666;
+    color: var(--color-text-muted);
     line-height: 1.6;
 }
 
@@ -62,7 +62,7 @@
     flex-direction: column;
     gap: 0.5rem;
     font-size: 0.9rem;
-    color: #555;
+    color: var(--color-text-muted);
 }
 
 .product-meta p {
@@ -75,7 +75,7 @@
     gap: 1rem;
     margin-top: 1.5rem;
     padding-top: 1.5rem;
-    border-top: 1px solid #e0e0e0;
+    border-top: 1px solid var(--color-border-soft);
 }
 
 .product-actions .app-btn {
@@ -88,13 +88,13 @@
     gap: 0.5rem;
     font-size: 0.9rem;
     font-weight: 500;
-    color: #333;
+    color: var(--color-text);
 }
 
 .size-input {
     width: 80px;
     padding: 0.5rem;
-    border: 2px solid #e0e0e0;
+    border: 2px solid var(--color-border);
     border-radius: 8px;
     font-size: 1rem;
     text-align: center;
@@ -103,7 +103,7 @@
 
 .size-input:focus {
     outline: none;
-    border-color: #03f3cb;
+    border-color: var(--color-accent);
 }
 
 /* Tablet y Desktop: layout horizontal */

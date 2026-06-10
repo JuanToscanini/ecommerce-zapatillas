@@ -9,7 +9,7 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  background: #d6d8db;
+  background: var(--color-surface);
   border-radius: 10px;
   padding: 14px 16px;
   margin-bottom: 12px;
@@ -17,7 +17,7 @@
 .contact-icon {
   width: 40px;
   height: 40px;
-  background: #1a1a1a;
+  background: var(--color-text);
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -28,10 +28,10 @@
 .contact-text span {
   display: block;
   font-size: 14px;
-  color: #1a1a1a;
+  color: var(--color-text);
   font-weight: 500;
 }
 .contact-text small {
   font-size: 12px;
-  color: #666;
+  color: var(--color-text-muted);
 }

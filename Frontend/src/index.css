@@ -10,7 +10,7 @@ html, body, #root {
 
 body {
   font-family: system-ui, -apple-system, sans-serif;
-  background-color: #9e9e9e;
+  background-color: var(--color-bg);
   margin: 0;
   padding: 0;
 }

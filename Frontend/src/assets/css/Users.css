@@ -7,35 +7,35 @@
 }
 
 .users-form-card {
-  --form-card-bg: #d6d8db;
+  --form-card-bg: var(--color-surface);
   --form-card-max-width: none;
   --form-card-radius: 12px;
   --form-card-padding: 1.5rem;
   --form-card-gap: 12px;
   --form-title-size: 16px;
   --form-title-weight: 600;
-  --form-title-color: #1a1a1a;
+  --form-title-color: var(--color-text);
   --form-title-margin: 0;
   --form-wrapper-gap: 12px;
-  --form-control-bg: #eaebec;
+  --form-control-bg: var(--color-surface-alt);
   --form-control-border: none;
   --form-control-radius: 8px;
   --form-control-padding: 10px 14px;
   --form-control-size: 14px;
-  --form-control-color: #333;
-  --form-submit-bg: #1a1a1a;
-  --form-submit-color: #fff;
+  --form-control-color: var(--color-text-muted);
+  --form-submit-bg: var(--color-text);
+  --form-submit-color: var(--color-accent-contrast);
   --form-submit-radius: 8px;
   --form-submit-padding: 12px;
   --form-submit-size: 14px;
   --form-submit-weight: 500;
-  --form-submit-hover-bg: #333;
+  --form-submit-hover-bg: var(--color-border-strong);
 }
 
 .users-table {
   width: 100%;
   border-collapse: collapse;
-  background: #d6d8db;
+  background: var(--color-surface);
   border-radius: 10px;
   overflow: hidden;
 }
@@ -45,13 +45,13 @@
   padding: 12px 16px;
   text-align: left;
   font-size: 14px;
-  color: #1a1a1a;
-  border-bottom: 1px solid #c0c2c5;
+  color: var(--color-text);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .users-table th {
-  background: #1a1a1a;
-  color: #fff;
+  background: var(--color-text);
+  color: var(--color-accent-contrast);
   font-weight: 500;
 }
 

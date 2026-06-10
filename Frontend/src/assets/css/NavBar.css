@@ -1,5 +1,5 @@
 .navbar {
-  background: #1a1a1a;
+  background: var(--color-text);
   padding: 0 48px;
   height: 64px;
   display: flex;
@@ -13,7 +13,7 @@
 }
 
 .navbar-brand {
-  color: #fff;
+  color: var(--color-accent-contrast);
   font-size: 18px;
   font-weight: 500;
   letter-spacing: 2px;
@@ -22,14 +22,14 @@
 }
 
 .brand-dot {
-  color: #ff1a1a;
+  color: var(--color-accent);
 }
 
 /* Separador vertical */
 .navbar-sep {
   width: 1px;
   height: 26px;
-  background: #333;
+  background: var(--color-border-strong);
   flex-shrink: 0;
   margin: 0 32px;
 }
@@ -44,7 +44,7 @@
 }
 
 .navbar-cat {
-  color: #999;
+  color: var(--color-text-soft);
   font-size: 14px;
   padding: 7px 20px;
   border-radius: 20px;
@@ -54,8 +54,8 @@
 
 .navbar-cat:hover,
 .navbar-cat.active {
-  background: #2a2a2a;
-  color: #fff;
+  background: var(--color-surface-hover);
+  color: var(--color-accent-contrast);
   font-weight: 500;
 }
 
@@ -68,8 +68,8 @@
 }
 
 .navbar-cart-btn {
-  color: #fff;
-  background: #ff1a1a;
+  color: var(--color-accent-contrast);
+  background: var(--color-accent);
   border: none;
   border-radius: 20px;
   padding: 9px 22px;
@@ -83,12 +83,12 @@
 }
 
 .navbar-cart-btn:hover {
-  background: #e01515;
+  background: var(--color-accent-hover);
 }
 
 .navbar-cart-count {
-  background: #ffffff;
-  color: #ff1a1a;
+  background: var(--color-accent-contrast);
+  color: var(--color-accent);
   font-size: 10px;
   font-weight: 700;
   width: 16px;
@@ -100,9 +100,9 @@
 }
 
 .navbar-action-btn {
-  color: #bbb;
+  color: var(--color-action-muted);
   background: transparent;
-  border: 1px solid #333;
+  border: 1px solid var(--color-border-strong);
   border-radius: 20px;
   padding: 8px 22px;
   font-size: 14px;
@@ -115,8 +115,8 @@
 }
 
 .navbar-action-btn:hover {
-  color: #fff;
-  border-color: #666;
+  color: var(--color-accent-contrast);
+  border-color: var(--color-border-hover);
 }
 
 /* Responsive */
