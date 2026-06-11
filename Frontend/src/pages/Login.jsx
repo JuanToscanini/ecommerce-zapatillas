@@ -55,9 +55,9 @@ function Login() {
                     onChange={(e) => setForm({ ...form, password: e.target.value })}
                 />
             </Form>
-            <button className="app-btn" type="button" onClick={() => navigate('/register')}>
-                Crear cuenta
-            </button>
+            <p className="auth-note">
+                ¿Aun no tenés cuenta? <a href="/register">Registrar sesión</a>
+            </p>
         </div>
     );
 }

@@ -9,8 +9,9 @@ html, body, #root {
 }
 
 body {
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: var(--font-body);
   background-color: var(--color-bg);
+  color: var(--color-text);
   margin: 0;
   padding: 0;
 }
