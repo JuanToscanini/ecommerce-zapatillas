@@ -29,9 +29,17 @@ function Catalogo() {
         fetchProducts();
     }, []);
 
-    const productosFiltrados = (!categoria || categoria === 'todos')
+    const slugToCategory = {
+        hombres: 'hombre',
+        mujer: 'mujer',
+        ninos: 'niños',
+    };
+
+    const categoriaFiltro = slugToCategory[categoria?.toLowerCase()];
+
+    const productosFiltrados = !categoriaFiltro
         ? products
-        : products.filter((p) => p.category.toLowerCase() === categoria.toLowerCase());
+        : products.filter((p) => p.category.toLowerCase() === categoriaFiltro);
 
     const categoriaMap = {
         hombres: 'Hombre',

@@ -13,6 +13,7 @@ import Users from './pages/Users';
 import MyProfile from './pages/MyProfile';
 import EditProduct from './pages/EditProduct';
 import EditUser from './pages/EditUser';
+import Cart from './pages/Cart';
 
 function App() {
   const links = [
@@ -39,7 +40,7 @@ function App() {
 
   return (
     <div className={`app-container ${esLayoutFijo ? 'layout-fijo' : 'layout-normal'}`}>
-      <NavBar links={links} cantidadCarrito={0} />
+      <NavBar />
       <main className="main-content">
         <Routes>
           <Route path="/" element={<Home />} />
@@ -53,6 +54,7 @@ function App() {
           <Route path="/mi-perfil" element={<MyProfile />} />
           <Route path="/productos/editar/:id" element={<EditProduct />} />
           <Route path="/usuarios/editar/:id" element={<EditUser />} />
+          <Route path="/carrito" element={<Cart />} />
         </Routes>
       </main>
       <Footer />

@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import '../assets/css/DetailProduct.css';
+import useCart from '../hooks/useCart';
 
 const API_URL = import.meta.env.VITE_API_BASE_URL;
 
@@ -13,24 +14,15 @@ function DetailProduct() {
     const [error, setError] = useState(null);
     const [talle, setTalle] = useState('');
 
-    const handleAddToCart = async () => {
-        if (product.stock === 0) {
+    const { addToCart } = useCart();
+
+    const handleAddToCart = () => {
+        if (product.stock === 0 || product.active === false) {
             toast.warning('Sin stock disponible');
             return;
         }
-
-        const cartId = localStorage.getItem('cartId');
-
-        try {
-            await axios.put(`${API_URL}/carts/${cartId}`, {
-                productId: product._id,
-                quantity: 1
-            });
-            toast.success('Producto agregado al carrito');
-        } catch (err) {
-            console.error(err);
-            toast.error('Error al agregar al carrito');
-        }
+        addToCart({ _id: product._id, nombre: product.name, precio: product.price, imagen: product.image, stock: product.stock });
+        toast.success('Producto agregado al carrito');
     };
 
     useEffect(() => {
