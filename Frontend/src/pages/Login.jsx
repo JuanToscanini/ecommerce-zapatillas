@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { jwtDecode } from 'jwt-decode';
@@ -11,6 +11,8 @@ function Login() {
     const [form, setForm] = useState({ email: '', password: '' });
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
+    const [searchParams] = useSearchParams();
+    const redirect = searchParams.get('redirect');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -25,7 +27,7 @@ function Login() {
             const decodedUser = jwtDecode(data.token); //para leer el token y obtener el rol del usuario
             localStorage.setItem('user', JSON.stringify(decodedUser)); //guardar el rol del usuario en localStorage
             toast.success('Sesión iniciada');
-            navigate('/');
+            navigate(redirect || '/');
         } catch (err) {
             toast.error(err.response?.data?.error || 'Error al iniciar sesión');
         } finally {
