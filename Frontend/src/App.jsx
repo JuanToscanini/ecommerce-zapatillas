@@ -14,6 +14,7 @@ import MyProfile from './pages/MyProfile';
 import EditProduct from './pages/EditProduct';
 import EditUser from './pages/EditUser';
 import Cart from './pages/Cart';
+import Orders from './pages/Orders';
 
 function App() {
   const links = [
@@ -55,6 +56,7 @@ function App() {
           <Route path="/productos/editar/:id" element={<EditProduct />} />
           <Route path="/usuarios/editar/:id" element={<EditUser />} />
           <Route path="/carrito" element={<Cart />} />
+          <Route path="/pedidos" element={<Orders />} />
         </Routes>
       </main>
       <Footer />

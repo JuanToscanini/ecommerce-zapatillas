@@ -82,6 +82,11 @@ function NavBar() {
                     </NavLink>
                 )}
                 {isLoggedIn && (
+                    <NavLink to="/pedidos" className="navbar-action-btn">
+                        {isAdmin ? 'Pedidos' : 'Mis pedidos'}
+                    </NavLink>
+                )}
+                {isLoggedIn && (
                     <NavLink to="/mi-perfil" className="navbar-action-btn">
                         Mi perfil
                     </NavLink>
