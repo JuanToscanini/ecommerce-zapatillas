@@ -93,6 +93,18 @@ html, body {
   --form-submit-hover-bg: var(--color-border-strong);
 }
 
+.auth-link {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  align-self: flex-end;
+}
+
+.auth-link:hover {
+  color: var(--color-text);
+  text-decoration: underline;
+}
+
 .auth-note {
   text-align: center;
   font-size: 13px;

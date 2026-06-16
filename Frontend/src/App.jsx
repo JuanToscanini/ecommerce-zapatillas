@@ -15,6 +15,8 @@ import EditProduct from './pages/EditProduct';
 import EditUser from './pages/EditUser';
 import Cart from './pages/Cart';
 import Orders from './pages/Orders';
+import ForgotPassword from './pages/ForgotPassword';
+import ResetPassword from './pages/ResetPassword';
 
 function App() {
   const links = [
@@ -29,11 +31,12 @@ function App() {
   
   const location = useLocation();
   const rutasFijasExactas = [
-    '/',              // Home
-    '/login',         // Login
-    '/register',      // Register
-    '/contacto',      // Contact
-    '/mi-perfil',     // MyProfile
+    '/',
+    '/login',
+    '/register',
+    '/contacto',
+    '/mi-perfil',
+    '/forgot-password',
   ];
   const esLayoutFijo = 
     rutasFijasExactas.includes(location.pathname) || 
@@ -57,6 +60,8 @@ function App() {
           <Route path="/usuarios/editar/:id" element={<EditUser />} />
           <Route path="/carrito" element={<Cart />} />
           <Route path="/pedidos" element={<Orders />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/reset-password/:token" element={<ResetPassword />} />
         </Routes>
       </main>
       <Footer />

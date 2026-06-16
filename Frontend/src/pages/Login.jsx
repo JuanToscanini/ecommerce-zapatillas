@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams, Link } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { jwtDecode } from 'jwt-decode';
@@ -56,10 +56,11 @@ function Login() {
                     value={form.password}
                     onChange={(e) => setForm({ ...form, password: e.target.value })}
                 />
+                <Link to="/forgot-password" className="auth-link">¿Olvidaste tu contraseña?</Link>
             </Form>
-            <button className="app-btn" type="button" onClick={() => navigate('/register')}>
-                Crear cuenta
-            </button>
+            <p className="auth-note" style={{ marginTop: '-0.5rem' }}>
+                ¿No tenés cuenta? <a href="/register">Crear cuenta</a>
+            </p>
         </div>
     );
 }
