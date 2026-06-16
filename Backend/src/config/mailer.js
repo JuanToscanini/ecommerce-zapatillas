@@ -39,4 +39,20 @@ async function sendPasswordResetEmail(toEmail, resetLink) {
     });
 }
 
-module.exports = { createTransporter, sendPasswordResetEmail };
+async function sendContactEmail({ name, email, message }) {
+    const transporter = createTransporter();
+    return transporter.sendMail({
+        from:    process.env.MAIL_FROM,
+        to:      process.env.MAIL_FROM,
+        replyTo: email,
+        subject: `Nuevo mensaje de contacto de ${name}`,
+        html: `
+            <p><strong>Nombre:</strong> ${name}</p>
+            <p><strong>Email:</strong> ${email}</p>
+            <p><strong>Mensaje:</strong></p>
+            <p>${message}</p>
+        `
+    });
+}
+
+module.exports = { createTransporter, sendPasswordResetEmail, sendContactEmail };

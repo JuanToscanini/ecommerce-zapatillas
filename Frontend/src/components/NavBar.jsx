@@ -4,7 +4,7 @@ import '../assets/css/NavBar.css';
 import useCart from '../hooks/useCart';
 
 const categorias = [
-    { href: '/', text: 'Inicio', end: true },
+    { href: '/productos', text: 'Productos' },
     { href: '/catalogo/hombres', text: 'Hombre' },
     { href: '/catalogo/mujer', text: 'Mujer' },
     { href: '/catalogo/ninos', text: 'Niños' },

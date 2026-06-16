@@ -1,7 +1,5 @@
 import '../assets/css/ProductCard.css';
 import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import useCart from '../hooks/useCart';
 
 function getRole() {
     try {
@@ -14,17 +12,7 @@ function getRole() {
 function ProductCard({id, name, details, price, image, stock, category, active, badge}) {
     const navigate = useNavigate();
     const isAdmin = getRole() === 'admin';
-    const { addToCart } = useCart();
 
-    function handleAddToCart(e) {
-        e.stopPropagation();
-        if (!stock || stock <= 0 || active === false) {
-            toast.error('Producto sin stock disponible');
-            return;
-        }
-        addToCart({ _id: id, nombre: name, precio: price, imagen: image, stock });
-        toast.success('Producto agregado al carrito');
-    }
     return (
         <article className="card" onClick={() => navigate(`/producto/${id}`)} style={{cursor: 'pointer'}}>
             <div className="imageContainer">
@@ -47,9 +35,9 @@ function ProductCard({id, name, details, price, image, stock, category, active, 
                 </div>
                 <button
                     className="app-btn app-btn--small app-btn--cart"
-                    onClick={handleAddToCart}
+                    onClick={(e) => { e.stopPropagation(); navigate(`/producto/${id}`); }}
                 >
-                    Agregar al carrito
+                    Ver producto
                 </button>
                 {isAdmin && (
                     <button

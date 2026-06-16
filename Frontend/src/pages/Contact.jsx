@@ -1,6 +1,9 @@
 import { useState } from 'react';
+import axios from 'axios';
 import '../assets/css/Contact.css';
 import Form from '../components/Form';
+
+const API_URL = import.meta.env.VITE_API_BASE_URL;
 
 function Contact() {
   const [contactData, setContactData] = useState({
@@ -9,11 +12,24 @@ function Contact() {
     message: ''
   });
   const [status, setStatus] = useState('');
+  const [error, setError] = useState('');
+  const [sending, setSending] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setStatus('¡Mensaje enviado! Nos comunicaremos contigo pronto.');
-    setContactData({ name: '', email: '', message: '' });
+    setStatus('');
+    setError('');
+    setSending(true);
+    try {
+      await axios.post(`${API_URL}/api/contact`, contactData);
+      setStatus('¡Mensaje enviado! Nos comunicaremos contigo pronto.');
+      setContactData({ name: '', email: '', message: '' });
+    } catch (err) {
+      setError('No se pudo enviar el mensaje. Intentá nuevamente más tarde.');
+      console.error(err);
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -42,7 +58,14 @@ function Contact() {
           </div>
         </div>
 
-        <Form title="Enviar mensaje" onSubmit={handleSubmit} submitText="Enviar" message={status}>
+        <Form
+          title="Enviar mensaje"
+          onSubmit={handleSubmit}
+          submitText={sending ? 'Enviando...' : 'Enviar'}
+          submitDisabled={sending}
+          message={status}
+          error={error}
+        >
           <input
             type="text"
             placeholder="Nombre"

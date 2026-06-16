@@ -5,6 +5,7 @@ const usersRoutes = require('./routes/users.routes');
 const salesRoutes = require('./routes/sales.routes');
 const cartsRoutes = require('./routes/carts.routes');
 const authRoutes = require('./routes/auth.routes');
+const contactRoutes = require('./routes/contact.routes');
 const logger = require('./middlewares/logger.middleware');
 const cors = require('cors');
 const app = express();
@@ -19,5 +20,6 @@ app.use('/sales', salesRoutes);
 app.use('/api', salesRoutes);
 app.use('/carts', cartsRoutes);
 app.use('/api/auth', authRoutes);
+app.use('/api/contact', contactRoutes);
 
 module.exports = app;
