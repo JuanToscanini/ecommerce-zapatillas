@@ -14,9 +14,10 @@ const app = express();
 const allowedOrigins = [
   "http://localhost:5173",
   "http://localhost:5174",
+  "https://programacioniv.vercel.app",
   process.env.FRONTEND_URL,
 ].filter(Boolean);
-app.use(cors({ origin: allowedOrigins }));
+app.use(cors({ origin: allowedOrigins, credentials: true }));
 app.use(logger);
 app.use(express.json());
 app.use('/products', productsRoutes);
