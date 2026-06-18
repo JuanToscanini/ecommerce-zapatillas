@@ -58,13 +58,8 @@ function Login() {
                 />
                 <Link to="/forgot-password" className="auth-link">¿Olvidaste tu contraseña?</Link>
             </Form>
-<<<<<<< HEAD
-            <p className="auth-note">
-                ¿Aun no tenés cuenta? <a href="/register">Registrar sesión</a>
-=======
             <p className="auth-note" style={{ marginTop: '-0.5rem' }}>
                 ¿No tenés cuenta? <a href="/register">Crear cuenta</a>
->>>>>>> 898920e60ad78e7d4d30426f4dd8afc4f0c07a20
             </p>
         </div>
     );
