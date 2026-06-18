@@ -56,6 +56,20 @@ function EditProduct() {
         }
     };
 
+    const handleDelete = async () => {
+        if (!window.confirm('¿Dar de baja este producto?')) return;
+        try {
+            const token = localStorage.getItem('token');
+            await axios.delete(`${API_URL}/products/${id}`, {
+                headers: { Authorization: `Bearer ${token}` }
+            });
+            toast.success('Producto dado de baja');
+            navigate('/catalogo/hombres');
+        } catch (err) {
+            toast.error(err.response?.data?.error || 'Error al dar de baja');
+        }
+    };
+
     if (loading) return <div>Cargando...</div>;
 
     return (
@@ -70,6 +84,7 @@ function EditProduct() {
                     <input className="editproduct-input" type="number" placeholder="Stock" value={form.stock} onChange={(e) => setForm({ ...form, stock: e.target.value })} />
                     <input className="editproduct-input" type="text" placeholder="Imagen (URL o ruta)" value={form.image} onChange={(e) => setForm({ ...form, image: e.target.value })} />
                     <button className="editproduct-btn" type="submit">Guardar cambios</button>
+                    <button className="editproduct-btn-delete" type="button" onClick={handleDelete}>Dar de baja</button>
                     <button className="editproduct-btn-cancel" type="button" onClick={() => navigate(-1)}>Cancelar</button>
                 </form>
             </div>

@@ -54,3 +54,13 @@
   cursor: pointer;
 }
 .editproduct-btn-cancel:hover { border-color: var(--color-text-muted); color: var(--color-text); }
+.editproduct-btn-delete {
+  background: transparent;
+  color: #e05252;
+  border: 1px solid #e05252;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.editproduct-btn-delete:hover { background: #e05252; color: #fff; }
