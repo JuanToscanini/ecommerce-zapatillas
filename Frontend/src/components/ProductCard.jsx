@@ -12,6 +12,7 @@ function getRole() {
 function ProductCard({id, name, details, price, image, stock, category, active, badge}) {
     const navigate = useNavigate();
     const isAdmin = getRole() === 'admin';
+
     return (
         <article className="card" onClick={() => navigate(`/producto/${id}`)} style={{cursor: 'pointer'}}>
             <div className="imageContainer">
@@ -32,6 +33,12 @@ function ProductCard({id, name, details, price, image, stock, category, active, 
                 <div className="priceRow">
                     <span className="price">${price}</span>
                 </div>
+                <button
+                    className="app-btn app-btn--small app-btn--cart"
+                    onClick={(e) => { e.stopPropagation(); navigate(`/producto/${id}`); }}
+                >
+                    Ver producto
+                </button>
                 {isAdmin && (
                     <button
                         className="app-btn app-btn--small"

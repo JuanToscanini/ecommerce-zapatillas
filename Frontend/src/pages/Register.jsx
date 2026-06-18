@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import Form from '../components/Form';
@@ -10,6 +10,8 @@ function Register() {
     const [form, setForm] = useState({ name: '', email: '', password: '' });
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
+    const [searchParams] = useSearchParams();
+    const redirect = searchParams.get('redirect');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -21,7 +23,7 @@ function Register() {
         try {
             await axios.post(`${API_URL}/users`, form);
             toast.success('Cuenta creada. Podés iniciar sesión.');
-            navigate('/login');
+            navigate(redirect ? `/login?redirect=${encodeURIComponent(redirect)}` : '/login');
         } catch (err) {
             toast.error(err.response?.data?.error || 'Error al registrarse');
         } finally {
@@ -58,7 +60,7 @@ function Register() {
                 />
             </Form>
             <p className="auth-note">
-                ¿Ya tenés cuenta? <a href="/login">Iniciar sesión</a>
+                ¿Ya tenés cuenta? <a href={redirect ? `/login?redirect=${encodeURIComponent(redirect)}` : '/login'}>Iniciar sesión</a>
             </p>
         </div>
     );

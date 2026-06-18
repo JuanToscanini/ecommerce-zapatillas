@@ -13,6 +13,10 @@ import Users from './pages/Users';
 import MyProfile from './pages/MyProfile';
 import EditProduct from './pages/EditProduct';
 import EditUser from './pages/EditUser';
+import Cart from './pages/Cart';
+import Orders from './pages/Orders';
+import ForgotPassword from './pages/ForgotPassword';
+import ResetPassword from './pages/ResetPassword';
 
 function App() {
   const links = [
@@ -27,11 +31,12 @@ function App() {
   
   const location = useLocation();
   const rutasFijasExactas = [
-    '/',              // Home
-    '/login',         // Login
-    '/register',      // Register
-    '/contacto',      // Contact
-    '/mi-perfil',     // MyProfile
+    '/',
+    '/login',
+    '/register',
+    '/contacto',
+    '/mi-perfil',
+    '/forgot-password',
   ];
   const esLayoutFijo = 
     rutasFijasExactas.includes(location.pathname) || 
@@ -39,12 +44,13 @@ function App() {
 
   return (
     <div className={`app-container ${esLayoutFijo ? 'layout-fijo' : 'layout-normal'}`}>
-      <NavBar links={links} cantidadCarrito={0} />
+      <NavBar />
       <main className="main-content">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/contacto" element={<Contact />} />
           <Route path="/catalogo/:categoria" element={<Catalogo />} />
+          <Route path="/productos" element={<Catalogo />} />
           <Route path="/crear-producto" element={<FormProduct />} />
           <Route path="/producto/:id" element={<DetailProduct />} />
           <Route path="/login" element={<Login />} />
@@ -53,6 +59,10 @@ function App() {
           <Route path="/mi-perfil" element={<MyProfile />} />
           <Route path="/productos/editar/:id" element={<EditProduct />} />
           <Route path="/usuarios/editar/:id" element={<EditUser />} />
+          <Route path="/carrito" element={<Cart />} />
+          <Route path="/pedidos" element={<Orders />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/reset-password/:token" element={<ResetPassword />} />
         </Routes>
       </main>
       <Footer />

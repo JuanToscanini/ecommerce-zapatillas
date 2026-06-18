@@ -1,9 +1,10 @@
 import { useNavigate, useLocation, NavLink } from 'react-router-dom';
 import { FiShoppingCart } from 'react-icons/fi';
 import '../assets/css/NavBar.css';
+import useCart from '../hooks/useCart';
 
 const categorias = [
-    { href: '/', text: 'Inicio', end: true },
+    { href: '/productos', text: 'Productos' },
     { href: '/catalogo/hombres', text: 'Hombre' },
     { href: '/catalogo/mujer', text: 'Mujer' },
     { href: '/catalogo/ninos', text: 'Niños' },
@@ -20,9 +21,10 @@ function getTokenData() {
     }
 }
 
-function NavBar({ cantidadCarrito }) {
+function NavBar() {
     const navigate = useNavigate();
     useLocation();
+    const { cartQuantity } = useCart();
 
     const tokenData = getTokenData();
     const isLoggedIn = !!tokenData;
@@ -64,8 +66,8 @@ function NavBar({ cantidadCarrito }) {
                 <button className="navbar-cart-btn" onClick={() => navigate('/carrito')}>
                     <FiShoppingCart />
                     Carrito
-                    {cantidadCarrito > 0 && (
-                        <span className="navbar-cart-count">{cantidadCarrito}</span>
+                    {cartQuantity > 0 && (
+                        <span className="navbar-cart-count">{cartQuantity}</span>
                     )}
                 </button>
 
@@ -77,6 +79,11 @@ function NavBar({ cantidadCarrito }) {
                 {isAdmin && (
                     <NavLink to="/crear-producto" className="navbar-action-btn">
                         Nuevo producto
+                    </NavLink>
+                )}
+                {isLoggedIn && (
+                    <NavLink to="/pedidos" className="navbar-action-btn">
+                        {isAdmin ? 'Pedidos' : 'Mis pedidos'}
                     </NavLink>
                 )}
                 {isLoggedIn && (
