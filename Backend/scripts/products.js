@@ -4,8 +4,8 @@ require('dotenv').config();
 const { faker } = require('@faker-js/faker');
 const Product = require('../src/models/product.model.js');
 
-// ─── Constante con links reales de imágenes ───────────────────────────────────
-// Agregá o quitá URLs según necesites. Se genera UN producto por link, sin repetir.
+// Constante con links reales de imágenes 
+// //Se genera UN producto por link, sin repetir.
 const PRODUCT_IMAGES = [
   'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&q=80',
   'https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=600&q=80',
@@ -24,14 +24,12 @@ const PRODUCT_IMAGES = [
   'https://images.unsplash.com/photo-1600269452121-4f2416e55c28?w=600&q=80',
 ];
 
-// ─── Opciones de categoría (exactamente las válidas del negocio) ──────────────
 const CATEGORIAS = ['hombre', 'mujer', 'niños'];
 
 const BADGES = ['Nuevo', 'Oferta', 'Destacado', 'Agotándose', ''];
 
 const randomItem = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
-// ─── Seed ─────────────────────────────────────────────────────────────────────
 const seedDatabase = async () => {
   try {
     await mongoose.connect(process.env.MONGO_URI);
@@ -40,7 +38,6 @@ const seedDatabase = async () => {
     await Product.deleteMany({});
     console.log('🧹 Base de datos limpiada...');
 
-    // Un producto por imagen, sin repetir links
     const products = PRODUCT_IMAGES.map((imageUrl) => ({
       name:     faker.commerce.productName(),
       details:  faker.commerce.productDescription(),
@@ -53,12 +50,12 @@ const seedDatabase = async () => {
     }));
 
     await Product.insertMany(products);
-    console.log(`🌱 Seeding completado: ${products.length} productos insertados.`);
+    console.log(`Seeding completado: ${products.length} productos insertados.`);
 
     await mongoose.disconnect();
     process.exit(0);
   } catch (error) {
-    console.error('❌ Error al sembrar la base de datos:', error);
+    console.error('Error al sembrar la base de datos:', error);
     process.exit(1);
   }
 };
