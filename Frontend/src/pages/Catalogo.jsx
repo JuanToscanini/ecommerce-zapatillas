@@ -4,8 +4,12 @@ import axios from 'axios';
 import ProductCard from '../components/ProductCard';
 import '../assets/css/Catalogo.css';
 
-const API_URL = import.meta.env.VITE_API_BASE_URL;
 
+const API_URL = import.meta.env.VITE_API_BASE_URL;
+axios.get(`${API_URL}/products`)
+  .then(res => console.log(res.data))
+  .catch(err => console.error("Error en la petición:", err));
+  
 function Catalogo() {
     const { categoria } = useParams();
     const [products, setProducts] = useState([]);
