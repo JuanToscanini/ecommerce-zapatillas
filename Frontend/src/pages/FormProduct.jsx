@@ -61,6 +61,11 @@ function FormProduct() {
 
     return (
         <main>
+            <div style={{ display: 'flex', justifyContent: 'flex-end', padding: '0 2rem' }}>
+                <button className="app-btn" onClick={() => navigate('/productos/inactivos')}>
+                    Ver productos dados de baja
+                </button>
+            </div>
             <Form title="Nuevo producto" onSubmit={handleSubmit} submitText="Crear" message={mensaje} error={error}>
                 <input type="text" placeholder="Nombre" value={product.name} onChange={(e) => setProduct({...product, name: e.target.value})} />
                 <input type="number" placeholder="Precio" value={product.price} onChange={(e) => setProduct({...product, price: e.target.value})} />

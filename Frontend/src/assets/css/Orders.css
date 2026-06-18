@@ -195,3 +195,19 @@
         font-size: 0.8rem;
     }
 }
+
+.order-card__actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid #ddd;
+}
+
+.order-card__btn-confirm {
+    background-color: #2e7d32;
+}
+
+.order-card__btn-delete {
+    background-color: #ff1a1a;
+}

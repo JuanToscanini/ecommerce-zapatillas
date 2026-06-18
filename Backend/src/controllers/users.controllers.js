@@ -5,7 +5,7 @@ const User = require('../models/user.model');
 
 const getUsers = async (req, res) => {
     try {
-        const users = await User.find();
+        const users = await User.find({ active: { $ne: false } }).select('-password');
         res.json(users);
     } catch (error) {
         res.status(500).json({ error: 'Error al obtener los usuarios' });
@@ -50,17 +50,50 @@ const createUser = async (req, res) => {
 
 const deleteUser = async (req, res) => {
     try {
-        const user = await User.findByIdAndDelete(req.params.id);
+        const user = await User.findByIdAndUpdate(
+            req.params.id,
+            { active: false },
+            { new: true }
+        );
         if (!user) {
             return res.status(404).json({ error: 'User no encontrado' });
         }
-        res.json(user);
+        res.json({ message: 'Usuario dado de baja', user });
     } catch (error) {
         if(error.name === 'CastError'){
             res.status(400).json({error:"ID obligatorio inválido"})
             return
         }
-        res.status(500).json({ error: 'Error al eliminar el usuario' });
+        res.status(500).json({ error: 'Error al dar de baja el usuario' });
+    }
+};
+
+const getInactiveUsers = async (req, res) => {
+    try {
+        const users = await User.find({ active: false }).select('-password');
+        res.json(users);
+    } catch (error) {
+        res.status(500).json({ error: 'Error al obtener los usuarios inactivos' });
+    }
+};
+
+const reactivateUser = async (req, res) => {
+    try {
+        const user = await User.findByIdAndUpdate(
+            req.params.id,
+            { active: true },
+            { new: true }
+        );
+        if (!user) {
+            return res.status(404).json({ error: 'User no encontrado' });
+        }
+        res.json({ message: 'Usuario reactivado', user });
+    } catch (error) {
+        if(error.name === 'CastError'){
+            res.status(400).json({error:"ID obligatorio inválido"})
+            return
+        }
+        res.status(500).json({ error: 'Error al reactivar el usuario' });
     }
 };
 
@@ -124,6 +157,8 @@ module.exports = {
     getMe,
     createUser,
     deleteUser,
-    updateUserById
+    updateUserById,
+    getInactiveUsers,
+    reactivateUser
 };
 

@@ -17,6 +17,10 @@ function DetailProduct() {
     const { addToCart } = useCart();
 
     const handleAddToCart = () => {
+        if (!talle) {
+            toast.warning('Seleccioná un talle antes de agregar al carrito');
+            return;
+        }
         if (product.stock === 0 || product.active === false) {
             toast.warning('Sin stock disponible');
             return;
@@ -72,7 +76,7 @@ function DetailProduct() {
                                 className="size-input"
                             />
                         </label>
-                        <button className="app-btn" onClick={handleAddToCart}>Agregar al carrito</button>
+                        <button className="app-btn" onClick={handleAddToCart} disabled={!talle}>Agregar al carrito</button>
                     </div>
                 </div>
             </div>

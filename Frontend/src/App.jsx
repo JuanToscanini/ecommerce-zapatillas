@@ -17,6 +17,8 @@ import Cart from './pages/Cart';
 import Orders from './pages/Orders';
 import ForgotPassword from './pages/ForgotPassword';
 import ResetPassword from './pages/ResetPassword';
+import InactiveUsers from './pages/InactiveUsers';
+import InactiveProducts from './pages/InactiveProducts';
 
 function App() {
   const links = [
@@ -63,6 +65,8 @@ function App() {
           <Route path="/pedidos" element={<Orders />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/reset-password/:token" element={<ResetPassword />} />
+          <Route path="/usuarios/inactivos" element={<InactiveUsers />} />
+          <Route path="/productos/inactivos" element={<InactiveProducts />} />
         </Routes>
       </main>
       <Footer />

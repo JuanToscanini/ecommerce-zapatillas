@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 import '../assets/css/Orders.css';
 
 const API_URL = import.meta.env.VITE_API_BASE_URL;
@@ -57,6 +58,35 @@ function Orders() {
         };
         fetchOrders();
     }, []);
+
+    const handleConfirmarPago = async (orderId) => {
+        try {
+            const token = localStorage.getItem('token');
+            const { data } = await axios.patch(
+                `${API_URL}/api/ordenes/${orderId}/estado`,
+                { estado: 'pago confirmado' },
+                { headers: { Authorization: `Bearer ${token}` } }
+            );
+            setOrders((prev) => prev.map((o) => (o._id === orderId ? data : o)));
+            toast.success('Pago confirmado');
+        } catch (err) {
+            toast.error(err.response?.data?.error || 'Error al actualizar el estado');
+        }
+    };
+
+    const handleEliminarPedido = async (orderId) => {
+        if (!window.confirm('¿Eliminar este pedido? Esta acción no se puede deshacer.')) return;
+        try {
+            const token = localStorage.getItem('token');
+            await axios.delete(`${API_URL}/api/${orderId}`, {
+                headers: { Authorization: `Bearer ${token}` }
+            });
+            setOrders((prev) => prev.filter((o) => o._id !== orderId));
+            toast.success('Pedido eliminado');
+        } catch (err) {
+            toast.error(err.response?.data?.error || 'Error al eliminar el pedido');
+        }
+    };
 
     if (loading) return <div className="orders-page"><p className="orders-loading">Cargando pedidos...</p></div>;
     if (error)   return <div className="orders-page"><p className="orders-error">{error}</p></div>;
@@ -162,6 +192,19 @@ function Orders() {
 
                             {/* Total */}
                             <p className="order-total">Total: <strong>{formatARS(order.total)}</strong></p>
+
+                            {isAdmin && (
+                                <div className="order-card__actions">
+                                    {order.estado === 'pendiente de pago' && (
+                                        <button className="app-btn order-card__btn-confirm" onClick={() => handleConfirmarPago(order._id)}>
+                                            Confirmar pago
+                                        </button>
+                                    )}
+                                    <button className="app-btn order-card__btn-delete" onClick={() => handleEliminarPedido(order._id)}>
+                                        Eliminar pedido
+                                    </button>
+                                </div>
+                            )}
 
                         </div>
                     );

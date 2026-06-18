@@ -31,6 +31,20 @@ function Users() {
         fetchUsers();
     }, []);
 
+    const handleDarDeBaja = async (id) => {
+        if (!window.confirm('¿Dar de baja este usuario?')) return;
+        try {
+            const token = localStorage.getItem('token');
+            await axios.delete(`${API_URL}/users/${id}`, {
+                headers: { Authorization: `Bearer ${token}` }
+            });
+            setUsers((prev) => prev.filter((u) => u._id !== id));
+            toast.success('Usuario dado de baja');
+        } catch (err) {
+            toast.error(err.response?.data?.error || 'Error al dar de baja');
+        }
+    };
+
     const fetchUsers = async () => {
         try {
             const token = localStorage.getItem('token');
@@ -69,7 +83,12 @@ function Users() {
     return (
         <div className="users-page">
             <div className="users-container">
-                <h2 className="page-heading">Usuarios</h2>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <h2 className="page-heading">Usuarios</h2>
+                    <button className="app-btn" onClick={() => navigate('/usuarios/inactivos')}>
+                        Ver dados de baja
+                    </button>
+                </div>
                 <table className="users-table">
                     <thead>
                         <tr>
@@ -91,6 +110,13 @@ function Users() {
                                         onClick={() => navigate(`/usuarios/editar/${u._id}`)}
                                     >
                                         Editar
+                                    </button>
+                                    <button
+                                        className="app-btn"
+                                        style={{ background: '#ff1a1a', marginLeft: '8px' }}
+                                        onClick={() => handleDarDeBaja(u._id)}
+                                    >
+                                        Dar de baja
                                     </button>
                                 </td>
                             </tr>

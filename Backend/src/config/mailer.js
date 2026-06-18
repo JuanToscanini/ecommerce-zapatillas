@@ -24,6 +24,15 @@ async function sendPasswordResetEmail(toEmail, resetLink) {
         from:    process.env.MAIL_FROM,
         to:      toEmail,
         subject: 'Recuperación de contraseña',
+        text: [
+            'Recibimos una solicitud para restablecer la contraseña de tu cuenta.',
+            '',
+            `Ingresá al siguiente enlace para crear una nueva contraseña: ${resetLink}`,
+            '',
+            'El link vence en 15 minutos y es de un solo uso.',
+            '',
+            'Si no solicitaste esto, ignorá este mensaje.'
+        ].join('\n'),
         html: `
             <p>Hola,</p>
             <p>Recibimos una solicitud para restablecer la contraseña de tu cuenta.</p>

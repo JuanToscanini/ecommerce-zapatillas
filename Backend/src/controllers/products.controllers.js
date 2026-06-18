@@ -98,11 +98,33 @@ const getInactiveProducts = async (req, res) => {
     }
 };
 
+const reactivateProduct = async (req, res) => {
+    try {
+        const product = await Product.findByIdAndUpdate(
+            req.params.id,
+            { active: true },
+            { new: true }
+        );
+        if (!product) {
+            res.status(404).json({ error: 'Producto no encontrado' });
+            return;
+        }
+        res.json({ message: 'Producto reactivado', product });
+    } catch (error) {
+        if (error.name === 'CastError') {
+            res.status(400).json({ error: 'ID de producto inválido' });
+            return;
+        }
+        res.status(500).json({ message: error.message });
+    }
+};
+
 module.exports = {
     getProducts,
     getProductById,
     createProduct,
     deleteProduct,
     updateProduct,
-    getInactiveProducts
+    getInactiveProducts,
+    reactivateProduct
 };

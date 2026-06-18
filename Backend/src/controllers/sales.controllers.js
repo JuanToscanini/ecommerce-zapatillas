@@ -133,11 +133,40 @@ const getMyOrders = async (req, res) => {
     }
 };
 
+const updateOrderStatus = async (req, res) => {
+    try {
+        const ESTADOS_VALIDOS = ['pendiente de pago', 'pago confirmado', 'enviado', 'listo para retiro', 'entregado', 'cancelado'];
+        const { estado } = req.body;
+
+        if (!estado || !ESTADOS_VALIDOS.includes(estado)) {
+            return res.status(400).json({ error: 'Estado inválido' });
+        }
+
+        const order = await Sales.findByIdAndUpdate(
+            req.params.id,
+            { estado },
+            { new: true }
+        );
+
+        if (!order) {
+            return res.status(404).json({ error: 'Orden no encontrada' });
+        }
+
+        res.json(order);
+    } catch (error) {
+        if (error.name === 'CastError') {
+            return res.status(400).json({ error: 'ID inválido' });
+        }
+        res.status(500).json({ message: error.message });
+    }
+};
+
 module.exports = {
     getSales,
     getSaleById,
     createSale,
     deleteSale,
     createOrder,
-    getMyOrders
+    getMyOrders,
+    updateOrderStatus
 };
