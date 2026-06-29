@@ -59,7 +59,7 @@ function Catalogo() {
     return (
         <div className="catalogo-page">
             <div className="app-title">
-                <h1>{categoriaLabel ? `Productos de ${categoriaLabel}` : 'Store Shop'}</h1>
+                <h1>{categoriaLabel ? `Productos de ${categoriaLabel}` : ''}</h1>
             </div>
             <div className="catalogo-search">
                 <input

@@ -11,7 +11,7 @@ function Footer() {
                 <a href="#"><FaTwitter /></a>
                 <a href="#"><MdEmail /></a>
             </div>
-            <p className="footer-copy">© 2026 Store Shop — Todos los derechos reservados</p>
+            <p className="footer-copy">© 2026 Iron Step — Todos los derechos reservados</p>
         </footer>
     );
 }

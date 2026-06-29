@@ -68,8 +68,8 @@ function App() {
           <Route path="/usuarios/inactivos" element={<InactiveUsers />} />
           <Route path="/productos/inactivos" element={<InactiveProducts />} />
         </Routes>
+        <Footer />
       </main>
-      <Footer />
     </div>
   );
 }
