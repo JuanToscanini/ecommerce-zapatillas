@@ -21,6 +21,10 @@ function DetailProduct() {
             toast.warning('Seleccioná un talle antes de agregar al carrito');
             return;
         }
+        if (Number(talle) < 20 || Number(talle) > 55) {
+            toast.warning('El talle debe estar entre 20 y 55');
+            return;
+        }
         if (product.stock === 0 || product.active === false) {
             toast.warning('Sin stock disponible');
             return;

@@ -36,7 +36,7 @@ const seedDatabase = async () => {
     console.log('✅ Conectado a MongoDB...');
 
     await Product.deleteMany({});
-    console.log('🧹 Base de datos limpiada...');
+    console.log('Productos borrados...');
 
     const products = PRODUCT_IMAGES.map((imageUrl) => ({
       name:     faker.commerce.productName(),

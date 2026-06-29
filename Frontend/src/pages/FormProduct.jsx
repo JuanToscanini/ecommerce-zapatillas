@@ -67,12 +67,12 @@ function FormProduct() {
                 </button>
             </div>
             <Form title="Nuevo producto" onSubmit={handleSubmit} submitText="Crear" message={mensaje} error={error}>
-                <input type="text" placeholder="Nombre" value={product.name} onChange={(e) => setProduct({...product, name: e.target.value})} />
-                <input type="number" placeholder="Precio" value={product.price} onChange={(e) => setProduct({...product, price: e.target.value})} />
+                <input type="text" placeholder="Nombre *" value={product.name} onChange={(e) => setProduct({...product, name: e.target.value})} />
+                <input type="number" placeholder="Precio *" value={product.price} onChange={(e) => setProduct({...product, price: e.target.value})} />
                 <input type="text" placeholder="Descripción" value={product.details} onChange={(e) => setProduct({...product, details: e.target.value})} />
                 <input type="text" placeholder="Badge" value={product.badge} onChange={(e) => setProduct({...product, badge: e.target.value})} />
-                <input type="text" placeholder="Categoría" value={product.category} onChange={(e) => setProduct({...product, category: e.target.value})} />
-                <input type="number" placeholder="Stock" value={product.stock} onChange={(e) => setProduct({...product, stock: e.target.value})} />
+                <input type="text" placeholder="Categoría *" value={product.category} onChange={(e) => setProduct({...product, category: e.target.value})} />
+                <input type="number" placeholder="Stock *" value={product.stock} onChange={(e) => setProduct({...product, stock: e.target.value})} />
                 <input type="text" placeholder="Imagen (URL)" value={product.image} onChange={(e) => setProduct({...product, image: e.target.value})} />
                 <label>
                     Activo
