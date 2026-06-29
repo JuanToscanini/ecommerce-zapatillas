@@ -15,6 +15,7 @@ function Catalogo() {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [busqueda, setBusqueda] = useState('');
 
     useEffect(() => {
         const fetchProducts = async () => {
@@ -41,9 +42,9 @@ function Catalogo() {
 
     const categoriaFiltro = slugToCategory[categoria?.toLowerCase()];
 
-    const productosFiltrados = !categoriaFiltro
-        ? products
-        : products.filter((p) => p.category.toLowerCase() === categoriaFiltro);
+    const productosFiltrados = products
+        .filter((p) => !categoriaFiltro || p.category.toLowerCase() === categoriaFiltro)
+        .filter((p) => p.name.toLowerCase().includes(busqueda.toLowerCase()));
 
     const categoriaMap = {
         hombres: 'Hombre',
@@ -59,6 +60,15 @@ function Catalogo() {
         <div className="catalogo-page">
             <div className="app-title">
                 <h1>{categoriaLabel ? `Productos de ${categoriaLabel}` : 'Store Shop'}</h1>
+            </div>
+            <div className="catalogo-search">
+                <input
+                    type="text"
+                    placeholder="Buscar producto..."
+                    value={busqueda}
+                    onChange={(e) => setBusqueda(e.target.value)}
+                    className="catalogo-search__input"
+                />
             </div>
             <div className="container-cards">
                 {productosFiltrados.map((product) => (

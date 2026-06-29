@@ -1,5 +1,6 @@
 .card {
-  background: var(--color-accent-contrast);
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
   border-radius: 16px;
   overflow: hidden;
   cursor: pointer;
@@ -14,7 +15,7 @@
 .imageContainer {
   width: 100%;
   height: 220px;
-  background: var(--color-surface-alt);
+  background: #f5f5f5;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -37,8 +38,8 @@
   position: absolute;
   top: 12px;
   left: 12px;
-  background: var(--color-accent);
-  color: var(--color-accent-contrast);
+  background: #e63030;
+  color: #ffffff;
   font-size: 11px;
   font-weight: 500;
   padding: 4px 10px;
@@ -51,7 +52,7 @@
 
 .category {
   font-size: 11px;
-  color: var(--color-text-soft);
+  color: #666666;
   letter-spacing: 1px;
   text-transform: uppercase;
   margin-bottom: 4px;
@@ -60,7 +61,7 @@
 .name {
   font-size: 14px;
   font-weight: 500;
-  color: var(--color-text);
+  color: #111111;
   margin: 0 0 6px 0;
   line-height: 1.3;
 }
@@ -74,16 +75,27 @@
 .price {
   font-size: 15px;
   font-weight: 500;
-  color: var(--color-text);
+  color: #111111;
 }
 
 .originalPrice {
   font-size: 13px;
-  color: var(--color-text-soft);
+  color: #888888;
   text-decoration: line-through;
 }
 
+/* Botones dentro de cards — estilo outline */
 .card .app-btn {
   width: 100%;
   margin-top: 8px;
+  background: transparent;
+  color: #111111;
+  border: 1px solid #111111;
+  border-radius: 10px;
+}
+
+.card .app-btn:hover {
+  background: #111111;
+  color: #ffffff;
+  opacity: 1;
 }

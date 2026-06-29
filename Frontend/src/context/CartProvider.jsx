@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
 import CartContext from './CartContext';
 
 function CartProvider({ children }) {
@@ -19,6 +20,10 @@ function CartProvider({ children }) {
     setCartItems(prev => {
       const existing = prev.find(item => item._id === producto._id);
       if (existing) {
+        if (existing.quantity >= producto.stock) {
+          toast.warning(`Stock máximo alcanzado (${producto.stock} unidades)`);
+          return prev;
+        }
         return prev.map(item =>
           item._id === producto._id
             ? { ...item, quantity: item.quantity + 1 }
@@ -34,13 +39,16 @@ function CartProvider({ children }) {
   }
 
   function increaseQty(productId) {
-    setCartItems(prev =>
-      prev.map(item =>
-        item._id === productId
-          ? { ...item, quantity: item.quantity + 1 }
-          : item
-      )
-    );
+    setCartItems(prev => {
+      const item = prev.find(i => i._id === productId);
+      if (item && item.quantity >= item.stock) {
+        toast.warning(`Stock máximo alcanzado (${item.stock} unidades)`);
+        return prev;
+      }
+      return prev.map(i =>
+        i._id === productId ? { ...i, quantity: i.quantity + 1 } : i
+      );
+    });
   }
 
   function decreaseQty(productId) {

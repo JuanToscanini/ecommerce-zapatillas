@@ -1,5 +1,5 @@
 .navbar {
-  background: var(--color-text);
+  background: #222222;
   padding: 0 48px;
   height: 64px;
   display: flex;
@@ -18,7 +18,7 @@
 }
 
 .navbar-brand {
-  color: var(--color-accent-contrast);
+  color: #ffffff;
   font-size: 18px;
   font-weight: 500;
   letter-spacing: 2px;
@@ -27,13 +27,13 @@
 }
 
 .brand-dot {
-  color: var(--color-accent);
+  color: #e63030;
 }
 
 .navbar-sep {
   width: 1px;
   height: 26px;
-  background: var(--color-border-strong);
+  background: #444444;
   flex-shrink: 0;
   margin: 0 32px;
 }
@@ -48,7 +48,7 @@
 }
 
 .navbar-cat {
-  color: var(--color-text-soft);
+  color: #999999;
   font-size: 14px;
   padding: 7px 20px;
   border-radius: 20px;
@@ -58,8 +58,8 @@
 
 .navbar-cat:hover,
 .navbar-cat.active {
-  background: var(--color-surface-hover);
-  color: var(--color-accent-contrast);
+  background: #333333;
+  color: #ffffff;
   font-weight: 500;
 }
 
@@ -72,8 +72,8 @@
 }
 
 .navbar-cart-btn {
-  color: var(--color-accent-contrast);
-  background: var(--color-accent);
+  color: #ffffff;
+  background: #e63030;
   border: none;
   border-radius: 20px;
   padding: 9px 22px;
@@ -87,12 +87,12 @@
 }
 
 .navbar-cart-btn:hover {
-  background: var(--color-accent-hover);
+  background: #c92828;
 }
 
 .navbar-cart-count {
-  background: var(--color-accent-contrast);
-  color: var(--color-accent);
+  background: #ffffff;
+  color: #e63030;
   font-size: 10px;
   font-weight: 700;
   width: 16px;
@@ -104,9 +104,9 @@
 }
 
 .navbar-action-btn {
-  color: var(--color-action-muted);
+  color: #aaaaaa;
   background: transparent;
-  border: 1px solid var(--color-border-strong);
+  border: 1px solid #444444;
   border-radius: 20px;
   padding: 8px 22px;
   font-size: 14px;
@@ -119,16 +119,16 @@
 }
 
 .navbar-action-btn:hover {
-  color: var(--color-accent-contrast);
-  border-color: var(--color-border-hover);
+  color: #ffffff;
+  border-color: #666666;
 }
 
 /* Hamburguesa — oculta en desktop */
 .navbar-hamburger {
   display: none;
   background: transparent;
-  border: 1px solid var(--color-border-strong);
-  color: var(--color-accent-contrast);
+  border: 1px solid #444444;
+  color: #ffffff;
   font-size: 18px;
   border-radius: 8px;
   padding: 6px 10px;
@@ -156,19 +156,16 @@
     padding: 0 16px;
   }
 
-  /* Ocultar secciones desktop */
   .navbar-cats,
   .navbar-actions,
   .navbar-sep {
     display: none;
   }
 
-  /* Mostrar hamburguesa */
   .navbar-hamburger {
     display: flex;
   }
 
-  /* Overlay oscuro detrás del drawer */
   .navbar-overlay {
     display: block;
     position: fixed;
@@ -177,7 +174,6 @@
     z-index: 99;
   }
 
-  /* Drawer slide-out desde la izquierda */
   .navbar-drawer {
     display: flex;
     flex-direction: column;
@@ -186,7 +182,7 @@
     left: 0;
     height: 100vh;
     width: 280px;
-    background: var(--color-text);
+    background: #222222;
     z-index: 100;
     padding: 24px 16px;
     gap: 8px;
@@ -207,7 +203,7 @@
 
   .drawer-sep {
     height: 1px;
-    background: var(--color-border-strong);
+    background: #444444;
     margin: 8px 0;
   }
 

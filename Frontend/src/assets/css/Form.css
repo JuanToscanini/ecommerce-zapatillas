@@ -55,8 +55,8 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  background: var(--form-submit-bg, var(--color-text));
-  color: var(--form-submit-color, var(--color-accent-contrast));
+  background: var(--form-submit-bg, #111111);
+  color: var(--form-submit-color, #ffffff);
   border: none;
   border-radius: var(--form-submit-radius, 12px);
   padding: var(--form-submit-padding, 0.95rem 1.5rem);

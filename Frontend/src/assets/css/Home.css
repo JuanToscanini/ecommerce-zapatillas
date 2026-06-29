@@ -1,10 +1,19 @@
 /* ── Hero ── */
 .home-hero {
   position: relative;
-  background-image: url('../css/hero.png');
+  background-image: url('../images/fotozapatilla.avif');
   background-size: cover;
   background-position: center;
   min-height: 420px;
+}
+
+@media (min-width: 1600px) {
+  .home-hero {
+    min-height: 600px;
+  }
+}
+
+.home-hero {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -37,19 +46,19 @@
 }
 
 .home-hero-btn {
-  background: #fff;
-  color: #1a1a1a;
+  background: #ffffff;
+  color: #111111;
   border: none;
   border-radius: 20px;
   padding: 0.65rem 2rem;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.2s, color 0.2s;
+  transition: background 0.2s;
 }
 
 .home-hero-btn:hover {
-  background: #f0f0f0;
+  background: #e0e0e0;
 }
 
 /* ── Featured ── */
@@ -65,7 +74,7 @@
 }
 
 .home-featured .category {
-  color: #000000 !important;
+  color: var(--color-text-soft) !important;
   font-weight: 600 !important;
 }
 
@@ -122,8 +131,8 @@
   position: absolute;
   top: 0.5rem;
   left: 0.5rem;
-  background: #1a1a1a;
-  color: #fff;
+  background: #e63030;
+  color: #ffffff;
   font-size: 0.7rem;
   font-weight: 600;
   padding: 0.2rem 0.55rem;
@@ -139,7 +148,7 @@
 
 .carousel-category {
   font-size: 0.75rem;
-  color: #000000;
+  color: var(--color-text-soft);
   margin: 0 0 0.2rem;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -157,15 +166,15 @@
 .carousel-price {
   font-size: 1rem;
   font-weight: 700;
-  color: #1a1a1a;
+  color: var(--color-text);
 }
 
 .carousel-arrow {
   position: absolute;
   top: 40%;
   transform: translateY(-50%);
-  background: #fff;
-  border: 1px solid #ddd;
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
   border-radius: 50%;
   width: 2.2rem;
   height: 2.2rem;
@@ -176,13 +185,12 @@
   align-items: center;
   justify-content: center;
   z-index: 2;
-  transition: background 0.2s, box-shadow 0.2s;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+  color: #111111;
+  transition: background 0.2s;
 }
 
 .carousel-arrow:hover:not(:disabled) {
   background: #f0f0f0;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
 }
 
 .carousel-arrow:disabled {
@@ -205,14 +213,14 @@
   height: 8px;
   border-radius: 50%;
   border: none;
-  background: #ccc;
+  background: #cccccc;
   cursor: pointer;
   padding: 0;
   transition: background 0.2s, transform 0.2s;
 }
 
 .carousel-dot--active {
-  background: #1a1a1a;
+  background: var(--color-accent);
   transform: scale(1.3);
 }
 
@@ -260,25 +268,23 @@
 
 .home-cat-banner {
   height: 100px;
-  background: linear-gradient(135deg, #1a1a1a 0%, #2e2e2e 100%);
+  background: #ffffff;
   border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 1.25rem;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid #e0e0e0;
+  transition: border-color 0.2s;
 }
 
 .home-cat-banner:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  border-color: #999999;
 }
 
 .home-cat-banner span {
-  color: #fff;
+  color: #111111;
   font-size: 1rem;
   font-weight: 600;
   letter-spacing: 1px;
@@ -287,7 +293,7 @@
 
 .home-cat-banner::after {
   content: '→';
-  color: var(--color-accent);
+  color: #e63030;
   font-size: 1.2rem;
   transition: transform 0.2s ease;
 }

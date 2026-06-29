@@ -32,7 +32,7 @@ function ForgotPassword() {
         return (
             <div className="login-page auth-page">
                 <div className="auth-form-card form-card">
-                    <p style={{ textAlign: 'center', lineHeight: 1.6, color: '#1a1a1a' }}>
+                    <p style={{ textAlign: 'center', lineHeight: 1.6, color: 'var(--color-text-muted)' }}>
                         Si el email existe en nuestro sistema, recibirás un link de recuperación
                         en los próximos minutos. Revisá también tu carpeta de spam.
                     </p>

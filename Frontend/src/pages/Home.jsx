@@ -116,7 +116,7 @@ function Home() {
       {/* Hero */}
       <div className="home-hero">
         <div className="home-hero-content">
-          <h1>STORE SHOP</h1>
+          <h1>IRON STEP</h1>
           <p>Las mejores zapatillas, al mejor precio.</p>
           <button
             className="home-hero-btn"

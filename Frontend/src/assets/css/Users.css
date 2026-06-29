@@ -23,13 +23,13 @@
   --form-control-padding: 10px 14px;
   --form-control-size: 14px;
   --form-control-color: var(--color-text-muted);
-  --form-submit-bg: var(--color-text);
-  --form-submit-color: var(--color-accent-contrast);
+  --form-submit-bg: #111111;
+  --form-submit-color: #ffffff;
   --form-submit-radius: 8px;
   --form-submit-padding: 12px;
   --form-submit-size: 14px;
   --form-submit-weight: 500;
-  --form-submit-hover-bg: var(--color-border-strong);
+  --form-submit-hover-bg: #333333;
 }
 
 .users-table {
@@ -50,8 +50,8 @@
 }
 
 .users-table th {
-  background: var(--color-text);
-  color: var(--color-accent-contrast);
+  background: var(--color-surface-alt);
+  color: var(--color-text);
   font-weight: 500;
 }
 

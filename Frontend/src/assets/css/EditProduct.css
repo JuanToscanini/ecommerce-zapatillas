@@ -33,8 +33,8 @@
   box-sizing: border-box;
 }
 .editproduct-btn {
-  background: var(--color-text);
-  color: var(--color-accent-contrast);
+  background: #111111;
+  color: #ffffff;
   border: none;
   border-radius: 8px;
   padding: 12px;
@@ -43,7 +43,7 @@
   cursor: pointer;
   margin-top: 4px;
 }
-.editproduct-btn:hover { background: var(--color-border-strong); }
+.editproduct-btn:hover { background: #333333; }
 .editproduct-btn-cancel {
   background: transparent;
   color: var(--color-text-muted);

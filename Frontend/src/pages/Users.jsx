@@ -113,7 +113,7 @@ function Users() {
                                     </button>
                                     <button
                                         className="app-btn"
-                                        style={{ background: '#ff1a1a', marginLeft: '8px' }}
+                                        style={{ background: '#e63030', color: '#ffffff', border: 'none', marginLeft: '8px' }}
                                         onClick={() => handleDarDeBaja(u._id)}
                                     >
                                         Dar de baja

@@ -47,7 +47,7 @@ function NavBar() {
             {/* Sección 1 — Logo */}
             <div className="navbar-logo">
                 <NavLink to="/" className="navbar-brand">
-                    STORE <span className="brand-dot">·</span> SHOP
+                    IRON <span className="brand-dot">·</span> STEP
                 </NavLink>
             </div>
             <div className="navbar-sep" />
