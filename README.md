@@ -1,4 +1,4 @@
-# Store Shop — E-commerce de Zapatillas
+# Iron Step — E-commerce de Zapatillas
 
 Aplicación web full stack desarrollada para la Tecnicatura Universitaria en Programación (UTN FRCU), cátedra Programación IV. Plataforma de e-commerce con autenticación, gestión de productos, carrito de compras, órdenes y panel de administración.
 
